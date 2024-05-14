@@ -7,7 +7,7 @@ public class Health : MonoBehaviour, IDamageable, IHittable
 {
     [SerializeField] int maxHealth;
     [SerializeField] float invincibilityTime;
-    public UnityEvent<int, int> HealthUpdate;
+    public UnityAction<int, int> HealthUpdate;
     public UnityAction NoHealth;
 
     int health;
@@ -26,7 +26,10 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     public void Heal(int healPoints)
     {
         health = Mathf.Clamp(health + healPoints, 0, maxHealth);
-        HealthUpdate.Invoke(health, maxHealth);
+        if(HealthUpdate != null)
+        {
+            HealthUpdate(health, maxHealth);
+        }
     }
 
     public void Damage(IDamageDealer damageDealer)
