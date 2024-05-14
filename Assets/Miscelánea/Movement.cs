@@ -16,19 +16,16 @@ public class Movement : MonoBehaviour
     [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
     [SerializeField] float decceleration;
-    [SerializeField] float jumpForce;
     [SerializeField] LayerMask floorLayer;
     [SerializeField][Range(0, 1f)] float raycastDistance;
 
     float currentMaxSpeed;
     float currentAcceleration;
     float currentDecceleration;
-    float currentJumpForce;
 
     public float MaxSpeed { get => maxSpeed; set { currentMaxSpeed = Mathf.Max(maxSpeed, value); } }
     public float Acceleration { get => acceleration; set { currentAcceleration = Mathf.Max(maxSpeed, value); } }
     public float Decceleration { get => decceleration; set { currentDecceleration = Mathf.Max(maxSpeed, value); } }
-    public float JumpForce { get => jumpForce; set { currentJumpForce = Mathf.Max(maxSpeed, value); } }
 
 
     Vector2 currentDirection = Vector2.zero;
@@ -50,7 +47,6 @@ public class Movement : MonoBehaviour
         currentMaxSpeed = maxSpeed;
         currentAcceleration = acceleration;
         currentDecceleration = decceleration;
-        currentJumpForce = jumpForce;
     }
 
     private void FixedUpdate()
@@ -87,11 +83,6 @@ public class Movement : MonoBehaviour
             movementVector *= difference * _acceleration;
         }
         rb.velocity += movementVector;
-    }
-
-    public void Jump()
-    {
-        rb.AddForce(currentJumpForce * Vector3.up, ForceMode2D.Impulse);
     }
 
 }
