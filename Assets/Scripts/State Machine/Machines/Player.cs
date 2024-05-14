@@ -37,6 +37,7 @@ public class Player : StateMachine, IBuffable
     {
         movement.Direction = Vector2.zero;
         OnDead.Invoke();
+        estadoActual.Salir();
         this.enabled = false;
     }
 

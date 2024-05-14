@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 191553683}
   - component: {fileID: 191553682}
   - component: {fileID: 191553687}
+  - component: {fileID: 191553690}
   m_Layer: 0
   m_Name: Player example
   m_TagString: Untagged
@@ -284,8 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  acceleration: 10
-  decceleration: 15
+  acceleration: 8
+  decceleration: 20
 --- !u!50 &191553688
 Rigidbody2D:
   serializedVersion: 4
@@ -348,6 +349,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &191553690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191553681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc5546d666f7284eafddefea7791954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  invincibilityTime: 0
 --- !u!1 &1120556625
 GameObject:
   m_ObjectHideFlags: 0

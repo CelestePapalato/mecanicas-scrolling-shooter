@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
 
 
     Vector2 currentDirection = Vector2.zero;
+    Vector2 currentVelocity = Vector2.zero;
+
     public Vector2 Direction
     {
         get => currentDirection;
@@ -52,27 +54,26 @@ public class Movement : MonoBehaviour
 
     private void move()
     {
-        Vector2 movementVector = Vector2.zero;
+        Vector2 movement = Vector2.zero;
         Vector2 targetSpeed = currentDirection * currentMaxSpeed;
-        Vector2 currentSpeed = rb.velocity;
-        currentSpeed.y = 0;
-        float difference = targetSpeed.magnitude - currentSpeed.magnitude;
-        float _acceleration;
-        if (!ExtendedMaths.Approximately(difference, 0, 0.01f))
+        float difference = targetSpeed.magnitude - currentVelocity.magnitude;
+        if (!ExtendedMaths.Approximately(difference, 0, 0.0000001f))
         {
-            if (difference > 0)
-            {
-                _acceleration = Mathf.Min(currentAcceleration * Time.fixedDeltaTime, difference);
-            }
-            else
+            float _acceleration = 0;
+            if (difference < 0)
             {
                 _acceleration = Mathf.Max(-currentDecceleration * Time.fixedDeltaTime, difference);
             }
-            difference = 1f / difference;
-            movementVector = targetSpeed - currentSpeed;
-            movementVector *= difference * _acceleration;
+            else
+            {
+                _acceleration = Mathf.Min(currentAcceleration * Time.fixedDeltaTime, difference);
+            }
+            difference = 1/difference;
+            movement = targetSpeed - currentVelocity;
+            movement *= difference * _acceleration;
         }
-        rb.velocity += movementVector;
+        currentVelocity += movement;
+        rb.velocity += movement;
     }
 
 }
