@@ -16,8 +16,6 @@ public class Movement : MonoBehaviour
     [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
     [SerializeField] float decceleration;
-    [SerializeField] LayerMask floorLayer;
-    [SerializeField][Range(0, 1f)] float raycastDistance;
 
     float currentMaxSpeed;
     float currentAcceleration;
@@ -37,8 +35,6 @@ public class Movement : MonoBehaviour
 
     }
 
-    public bool OnFloor { get; private set; }
-
     Rigidbody2D rb;
 
     private void Awake()
@@ -51,13 +47,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isOnFloor();
         move();
-    }
-
-    public void isOnFloor()
-    {
-        OnFloor = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, floorLayer);
     }
 
     private void move()
