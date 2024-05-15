@@ -10,7 +10,7 @@ public class PlayerHumanoidMech : PlayerController
     public override void Attack()
     {
         if (!isActive) { return; }
-        Debug.Log("Ataco bambam");
+        Debug.Log("ATACOOOO SLAAAAASH");
     }
 
     public override void Evade()

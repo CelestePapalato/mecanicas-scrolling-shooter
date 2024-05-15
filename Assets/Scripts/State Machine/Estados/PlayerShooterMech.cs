@@ -19,7 +19,7 @@ public class PlayerShooterMech : PlayerController
     public override void Attack()
     {
         if (!isActive) { return; }
-        Debug.Log("ATACOOOO SLAAAAASH");
+        Debug.Log("Ataco bambam");
     }
 
     public override void Evade()

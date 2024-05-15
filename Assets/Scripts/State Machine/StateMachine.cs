@@ -43,22 +43,9 @@ public class StateMachine : MonoBehaviour
 
     public virtual void CambiarEstado(Estado nuevoEstado)
     {
-        if (estadoActual)
-        {
-            estadoActual.Salir();
-        }
-        if (nuevoEstado)
-        {
-            estadoActual = nuevoEstado;
-        }
-        else
-        {
-            estadoActual = primerEstado;
-        }
-        if (!estadoActual)
-        {
-            estadoActual.Entrar(this);
-        }
+        estadoActual?.Salir();
+        estadoActual = (nuevoEstado) ? nuevoEstado : primerEstado;
+        estadoActual?.Entrar(this);
     }
 
     private void OnDisable()
