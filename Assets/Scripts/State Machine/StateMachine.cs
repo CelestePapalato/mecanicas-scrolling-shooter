@@ -59,6 +59,16 @@ public class StateMachine : MonoBehaviour
         }
         estadoActual.Entrar(this);
     }
+
+    private void OnDisable()
+    {
+        estadoActual.Salir();
+    }
+
+    private void OnDestroy()
+    {
+        estadoActual.Salir();
+    }
 }
 
 public abstract class Estado : MonoBehaviour
@@ -73,4 +83,14 @@ public abstract class Estado : MonoBehaviour
     public virtual void Actualizar() { }
     public virtual void ActualizarFixed() { }
     public virtual void DañoRecibido() { }
+
+    private void OnDisable()
+    {
+        personaje.CambiarEstado(null);
+    }
+
+    private void OnDestroy()
+    {
+        personaje.CambiarEstado(null);
+    }
 }
