@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     [Range(0, .15f)] float smoothTime;
 
+    [Header("Debug")]
     [SerializeField]
     float currentSpeed = 0;
     [SerializeField]
