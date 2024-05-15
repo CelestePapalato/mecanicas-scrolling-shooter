@@ -111,4 +111,10 @@ public class Movement : MonoBehaviour
         }
         rb.MovePosition(rb.position + currentVelocity * currentSpeed * Time.deltaTime);
     }
+
+    public void DontMove()
+    {
+        currentSpeed = 0;
+        currentDirection = Vector2.zero;
+    }
 }
