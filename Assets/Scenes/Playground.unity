@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 191553687}
   - component: {fileID: 191553690}
   - component: {fileID: 191553691}
+  - component: {fileID: 191553692}
   m_Layer: 0
   m_Name: Player example
   m_TagString: Untagged
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831a01f6773dff5438ce18e8028b1f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primerEstado: {fileID: 191553691}
+  primerEstado: {fileID: 191553692}
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -367,6 +368,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
+--- !u!114 &191553692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191553681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bed83183adbfde4ba7dbdcf7453257a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  shotVector: {x: 0, y: 0}
 --- !u!1 &1120556625
 GameObject:
   m_ObjectHideFlags: 0
