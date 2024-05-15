@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : Estado
 {
-    bool isActive = false;
+    protected bool isActive = false;
 
     protected Movement movement;
 
@@ -26,7 +26,7 @@ public abstract class PlayerController : Estado
         isActive = false;
     }
 
-    public void OnMove(InputValue inputValue)
+    public virtual void OnMove(InputValue inputValue)
     {
         if(movement &&  isActive) {
             movement.Direction = inputValue.Get<Vector2>();
