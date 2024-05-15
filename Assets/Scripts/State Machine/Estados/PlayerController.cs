@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : Estado
+public abstract class PlayerController : Estado
 {
     bool isActive = false;
 
-    Movement movement;
+    protected Movement movement;
 
     private void Awake()
     {
@@ -32,4 +32,8 @@ public class PlayerController : Estado
             movement.Direction = inputValue.Get<Vector2>();
         }
     }
+
+    public abstract void OnAttack();
+
+    public abstract void OnEvade();
 }

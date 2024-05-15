@@ -17,7 +17,6 @@ public class Player : StateMachine, IBuffable
     private void Awake()
     {
         movement = GetComponent<Movement>();
-        getOGMovementParameters();
         healthComponent = GetComponent<Health>();
         if (!healthComponent)
         {
@@ -52,25 +51,14 @@ public class Player : StateMachine, IBuffable
         StartCoroutine(SpeedPowerUpEnabler(time));
     }
 
-    private void getOGMovementParameters()
-    {
-        ogMaxSpeed = movement.MaxSpeed;
-        ogAcceleration = movement.Acceleration;
-        ogDecceleration = movement.Decceleration;
-    }
-
     private void resetMovementParameters()
     {
-        movement.MaxSpeed = ogMaxSpeed;
-        movement.Acceleration = ogAcceleration;
-        movement.Decceleration = ogDecceleration;
+        movement.SpeedMultiplier = 1;
     }
 
     private void modifySpeed(float multiplier)
     {
-        movement.MaxSpeed = ogMaxSpeed * multiplier;
-        movement.Acceleration = ogAcceleration * multiplier;
-        movement.Decceleration = ogDecceleration * multiplier;
+        movement.SpeedMultiplier = multiplier;
     }
 
     IEnumerator SpeedPowerUpEnabler(float time)

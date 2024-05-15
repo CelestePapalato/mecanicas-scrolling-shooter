@@ -137,9 +137,9 @@ GameObject:
   - component: {fileID: 191553688}
   - component: {fileID: 191553686}
   - component: {fileID: 191553683}
-  - component: {fileID: 191553682}
   - component: {fileID: 191553687}
   - component: {fileID: 191553690}
+  - component: {fileID: 191553691}
   m_Layer: 0
   m_Name: Player example
   m_TagString: Untagged
@@ -147,18 +147,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &191553682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191553681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2717161e761e8a4685835f5eccc6fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &191553683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831a01f6773dff5438ce18e8028b1f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primerEstado: {fileID: 191553682}
+  primerEstado: {fileID: 191553691}
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -288,10 +276,8 @@ MonoBehaviour:
   acceleration: 8
   decceleration: 20
   smoothTime: 0.139
-  currentMaxSpeed: 0
-  currentAcceleration: 0
-  currentDecceleration: 0
   currentSpeed: 0
+  speedMultiplier: 1
 --- !u!50 &191553688
 Rigidbody2D:
   serializedVersion: 4
@@ -368,6 +354,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   invincibilityTime: 0.5
+--- !u!114 &191553691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191553681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc69195a2ef71f4c9088f28f0a2a77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
 --- !u!1 &1120556625
 GameObject:
   m_ObjectHideFlags: 0

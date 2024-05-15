@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,19 +22,39 @@ public class Movement : MonoBehaviour
     [SerializeField]
     [Range(0, .15f)] float smoothTime;
 
-    [Header("Debug")]
-    [SerializeField]
-    float currentMaxSpeed;
-    [SerializeField]
-    float currentAcceleration;
-    [SerializeField]
-    float currentDecceleration;
     [SerializeField]
     float currentSpeed = 0;
+    [SerializeField]
+    float speedMultiplier = 1;
 
-    public float MaxSpeed { get => maxSpeed; set { currentMaxSpeed = Mathf.Max(maxSpeed, value); } }
-    public float Acceleration { get => acceleration; set { currentAcceleration = Mathf.Max(maxSpeed, value); } }
-    public float Decceleration { get => decceleration; set { currentDecceleration = Mathf.Max(maxSpeed, value); } }
+    public float SpeedMultiplier { get => speedMultiplier; set => speedMultiplier = value; }
+
+    public float MaxSpeed
+    {
+        get => maxSpeed;
+        set
+        {
+            if (value > 0)
+            {
+                float diff = maxSpeed / value;
+                maxSpeed = value;
+                acceleration *= diff;
+                decceleration *= diff;
+            }
+            if (value == 0)
+            {
+                maxSpeed = 0;
+            }
+        }
+    }
+    public float Acceleration
+    {
+        get => acceleration * speedMultiplier; private set { acceleration = (value > 0) ? value : acceleration; }
+    }
+    public float Decceleration
+    {
+        get => decceleration * speedMultiplier; private set { decceleration = (value > 0) ? value : decceleration; }
+    }
 
 
     Vector2 currentDirection = Vector2.zero;
@@ -53,9 +74,6 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentMaxSpeed = maxSpeed;
-        currentAcceleration = acceleration;
-        currentDecceleration = decceleration;
     }
 
     private void FixedUpdate()
@@ -65,22 +83,21 @@ public class Movement : MonoBehaviour
 
     private void move()
     {
-        Vector2 targetVelocity = currentDirection * currentMaxSpeed;
+        Vector2 targetVelocity = currentDirection * MaxSpeed;
         float _acceleration = 0;
         float difference = targetVelocity.magnitude - currentSpeed;
         if (!ExtendedMaths.Approximately(difference, 0, 0.0001f))
         {
             if (difference > 0)
             {
-                _acceleration = Mathf.Min(currentAcceleration * Time.fixedDeltaTime, difference);
+                _acceleration = Mathf.Min(Acceleration * Time.fixedDeltaTime, difference);
             }
             else if (difference < 0)
             {
-                _acceleration = Mathf.Max(-currentDecceleration * Time.fixedDeltaTime, difference);
+                _acceleration = Mathf.Max(-Decceleration * Time.fixedDeltaTime, difference);
             }
         }
         currentSpeed += _acceleration;
-        Vector2 targetSpeed = currentDirection * currentSpeed * Time.fixedDeltaTime;
         if (targetVelocity.magnitude > 0)
         {
             if (currentVelocity != Vector2.zero)
