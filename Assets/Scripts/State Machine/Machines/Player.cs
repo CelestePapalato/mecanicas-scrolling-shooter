@@ -28,6 +28,12 @@ public class Player : StateMachine, IBuffable
         healthComponent.NoHealth += Dead;
     }
 
+    public override void CambiarEstado(Estado nuevoEstado)
+    {
+        base.CambiarEstado(nuevoEstado);
+        controller = (PlayerController) estadoActual;
+    }
+
     public void Accept(IBuff buff)
     {
         if (buff == null) return;
@@ -70,12 +76,6 @@ public class Player : StateMachine, IBuffable
         resetMovementParameters();
     }
 
-    public override void CambiarEstado(Estado nuevoEstado)
-    {
-        base.CambiarEstado(nuevoEstado);
-        controller = (PlayerController)nuevoEstado;
-    }
-
     private void OnMove(InputValue inputValue)
     {
         movement.Direction = inputValue.Get<Vector2>();
@@ -108,6 +108,6 @@ public class Player : StateMachine, IBuffable
 
     private void OnTransform()
     {
-
+        Debug.Log("Por el poder del prisma lunar");
     }
 }

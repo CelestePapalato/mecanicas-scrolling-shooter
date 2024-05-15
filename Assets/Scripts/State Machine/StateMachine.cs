@@ -15,11 +15,9 @@ public class StateMachine : MonoBehaviour
             primerEstado = GetComponent<Estado>();
         }
 
-        estadoActual = primerEstado;
-
-        if (estadoActual)
+        if (primerEstado)
         {
-            CambiarEstado(estadoActual);
+            CambiarEstado(primerEstado);
         }
         else
         {

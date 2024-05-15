@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : Estado
 {
+    [SerializeField] float maxSpeed;
+
     protected bool isActive = false;
 
     protected Movement movement;
@@ -18,6 +20,11 @@ public abstract class PlayerController : Estado
     {
         base.Entrar(personajeActual);
         isActive = true;
+        if (movement)
+        {
+            movement.MaxSpeed = maxSpeed;
+        }
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
     public override void Salir()
@@ -26,14 +33,7 @@ public abstract class PlayerController : Estado
         isActive = false;
     }
 
-    public virtual void Move(InputValue inputValue)
-    {
-        /*
-        if(movement &&  isActive) {
-            movement.Direction = inputValue.Get<Vector2>();
-        }
-        */
-    }
+    public abstract void Move(InputValue inputValue);
 
     public abstract void Attack();
 

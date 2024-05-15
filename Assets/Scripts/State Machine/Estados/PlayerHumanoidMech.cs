@@ -1,19 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerHumanoidMech : PlayerController
 {
-    [SerializeField] float maxSpeed;
-
-    public override void Entrar(StateMachine personajeActual)
-    {
-        base.Entrar(personajeActual);
-        if (movement)
-        {
-            movement.MaxSpeed = maxSpeed;
-        }
-    }
+    public override void Move(InputValue inputValue) { }
 
     public override void Attack()
     {

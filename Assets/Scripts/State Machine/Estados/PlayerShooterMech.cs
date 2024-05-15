@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerShooterMech : PlayerController
 {
-    [SerializeField] float maxSpeed;
     [SerializeField] Vector2 shotVector;
 
     Shooter shooterComponent;
@@ -15,14 +14,7 @@ public class PlayerShooterMech : PlayerController
         shooterComponent = GetComponent<Shooter>();
     }
 
-    public override void Entrar(StateMachine personajeActual)
-    {
-        base.Entrar(personajeActual);
-        if (movement)
-        {
-            movement.MaxSpeed = maxSpeed;
-        }
-    }
+    public override void Move(InputValue inputValue) { }
 
     public override void Attack()
     {
