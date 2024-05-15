@@ -92,7 +92,6 @@ public class Movement : MonoBehaviour
                 currentVelocity = currentDirection.normalized;
             }
         }
-        Debug.Log(currentVelocity * currentSpeed);
         rb.MovePosition(rb.position + currentVelocity * currentSpeed * Time.deltaTime);
     }
 }
