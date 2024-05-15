@@ -9,6 +9,7 @@ public class StateMachine : MonoBehaviour
     protected Estado estadoActual;
 
     protected Estado primerEstadoBuffer;
+    protected Estado ultimoEstado;
 
     void Start()
     {
@@ -53,11 +54,12 @@ public class StateMachine : MonoBehaviour
     private void OnEnable()
     {
         primerEstado = primerEstadoBuffer;
-        primerEstado.Entrar(this);
+        CambiarEstado(ultimoEstado);
     }
 
     private void OnDisable()
     {
+        ultimoEstado = estadoActual;
         primerEstadoBuffer = primerEstado;
         primerEstado = null;
         estadoActual?.Salir();
