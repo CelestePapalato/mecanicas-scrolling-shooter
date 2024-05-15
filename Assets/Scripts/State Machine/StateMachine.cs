@@ -86,11 +86,13 @@ public abstract class Estado : MonoBehaviour
 
     private void OnDisable()
     {
+        if (!personaje) { return; }
         personaje.CambiarEstado(null);
     }
 
     private void OnDestroy()
     {
+        if (!personaje) { return; }
         personaje.CambiarEstado(null);
     }
 }
