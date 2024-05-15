@@ -38,14 +38,12 @@ public abstract class PlayerController : Estado
 
     public override void Entrar(StateMachine personajeActual)
     {
-        Debug.Log("Entré");
         base.Entrar(personajeActual);
         isActive = true;
         if (movement)
         {
             movement.MaxSpeed = maxSpeed;
         }
-        Debug.Log("Me activé");
     }
 
     public override void Salir()
