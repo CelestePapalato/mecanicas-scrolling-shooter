@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
+    [SerializeField] Health healthComponent;
     Slider healthbarSlider;
 
     private void Awake()
     {
         healthbarSlider = GetComponent<Slider>();
-        if (!healthbarSlider) { gameObject.SetActive(false); }
+        if (!healthbarSlider || !healthComponent) { gameObject.SetActive(false); }
+        healthComponent.HealthUpdate += UpdateSlider;
     }
 
     public void UpdateSlider(int value, int maxValue)
