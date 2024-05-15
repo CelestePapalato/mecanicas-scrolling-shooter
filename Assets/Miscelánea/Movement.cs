@@ -13,11 +13,15 @@ public class ExtendedMaths
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField]
-    [Range(0, .15f)] float smoothTime;
     [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
     [SerializeField] float decceleration;
+
+    [Header("Movement smoothing")]
+    [SerializeField]
+    [Range(0, .15f)] float smoothTime;
+
+    [Header("Debug")]
     [SerializeField]
     float currentMaxSpeed;
     [SerializeField]
