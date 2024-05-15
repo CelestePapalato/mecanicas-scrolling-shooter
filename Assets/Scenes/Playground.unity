@@ -356,6 +356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
+  attackCooldown: 1
+  evadeCooldown: 0.7
 --- !u!114 &191553692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
+  attackCooldown: 0.3
+  evadeCooldown: 1.5
   shotVector: {x: 1, y: 0}
 --- !u!1 &230907750
 GameObject:

@@ -6,6 +6,26 @@ using UnityEngine.InputSystem;
 public abstract class PlayerController : Estado
 {
     [SerializeField] float maxSpeed;
+    [SerializeField] float attackCooldown;
+    [SerializeField] float evadeCooldown;
+
+    // # ATTACK ======================
+    protected bool canAttack = true;
+
+    protected float attackCooldownMultiplier = 1;
+
+    public float AttackCooldownMultiplier
+    {
+        get => attackCooldownMultiplier;
+        set => attackCooldownMultiplier = (value <= 1) ? value : attackCooldownMultiplier;
+    }
+    // =============================== # 
+
+    // # EVADE =======================
+    protected bool canEvade = true;
+
+    public bool CanEvade { get => canEvade; set => canEvade = value; }
+    // =============================== #
 
     protected bool isActive = false;
 
@@ -36,7 +56,31 @@ public abstract class PlayerController : Estado
 
     public abstract void Move(InputValue inputValue);
 
-    public abstract void Attack();
+    public virtual void Attack()
+    {
+        if (!canAttack) { return; }
+        StopCoroutine(ControlAttackCooldown());
+        StartCoroutine(ControlAttackCooldown());
+    }
 
-    public abstract void Evade();
+    public virtual void Evade()
+    {
+        if (!canEvade) { return; }
+        StopCoroutine(ControlEvadeCooldown());
+        StartCoroutine(ControlEvadeCooldown());
+    }
+
+    IEnumerator ControlAttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldownMultiplier * attackCooldown);
+        canAttack = true;
+    }
+
+    IEnumerator ControlEvadeCooldown()
+    {
+        canEvade = false;
+        yield return new WaitForSeconds(evadeCooldown);
+        canEvade = true;
+    }
 }

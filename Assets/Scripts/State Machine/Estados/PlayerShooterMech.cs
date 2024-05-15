@@ -18,13 +18,15 @@ public class PlayerShooterMech : PlayerController
 
     public override void Attack()
     {
-        if (!isActive) { return; }
+        if (!isActive || !canAttack) { return; }
         Debug.Log("Ataco bambam");
+        base.Attack();
     }
 
     public override void Evade()
     {
-        if (!isActive) { return; }
+        if (!isActive || !canEvade) { return; }
         Debug.Log("Esquivo >:P >:P");
+        base.Evade();
     }
 }

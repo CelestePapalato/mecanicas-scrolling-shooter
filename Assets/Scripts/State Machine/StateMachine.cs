@@ -8,6 +8,8 @@ public class StateMachine : MonoBehaviour
 
     protected Estado estadoActual;
 
+    protected Estado primerEstadoBuffer;
+
     void Start()
     {
         if (!primerEstado)
@@ -48,14 +50,23 @@ public class StateMachine : MonoBehaviour
         estadoActual?.Entrar(this);
     }
 
+    private void OnEnable()
+    {
+        primerEstado = primerEstadoBuffer;
+        primerEstado.Entrar(this);
+    }
+
     private void OnDisable()
     {
-        estadoActual.Salir();
+        primerEstadoBuffer = primerEstado;
+        primerEstado = null;
+        estadoActual?.Salir();
     }
 
     private void OnDestroy()
     {
-        estadoActual.Salir();
+        primerEstado = null;
+        estadoActual?.Salir();
     }
 }
 

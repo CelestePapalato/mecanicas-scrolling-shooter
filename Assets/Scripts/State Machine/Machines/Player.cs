@@ -16,6 +16,9 @@ public class Player : StateMachine, IBuffable
 
     public UnityEvent OnDead;
 
+    bool attackInput = false;
+    bool evadeInput = false;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -26,6 +29,18 @@ public class Player : StateMachine, IBuffable
         }
         healthComponent.HealthUpdate += OnDamage;
         healthComponent.NoHealth += Dead;
+    }
+
+    private void Update()
+    {
+        if (attackInput)
+        {
+            controller?.Attack();
+        }
+        if(evadeInput)
+        {
+            controller?.Evade();
+        }
     }
 
     public override void CambiarEstado(Estado nuevoEstado)
@@ -79,31 +94,22 @@ public class Player : StateMachine, IBuffable
     private void OnMove(InputValue inputValue)
     {
         movement.Direction = inputValue.Get<Vector2>();
-        if (controller)
-        {
-            controller.Move(inputValue);
-        }
+        controller?.Move(inputValue);
     }
 
     private void OnAttack()
     {
-        if (controller)
-        {
-            controller.Attack();
-        }
+        attackInput = !attackInput;
     }
 
     private void OnEvade()
     {
-        if (controller)
-        {
-            controller.Evade();
-        }
+        evadeInput = !evadeInput;
     }
 
     private void OnDamage(int health, int maxHealth)
     {
-        estadoActual.DañoRecibido();
+        estadoActual?.DañoRecibido();
     }
 
     private void OnTransform()
