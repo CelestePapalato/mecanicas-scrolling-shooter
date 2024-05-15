@@ -22,6 +22,7 @@ public class Player : StateMachine, IBuffable
         {
             healthComponent = GetComponentInChildren<Health>();
         }
+        healthComponent.HealthUpdate += OnDamage;
         healthComponent.NoHealth += Dead;
     }
 
@@ -67,4 +68,8 @@ public class Player : StateMachine, IBuffable
         resetMovementParameters();
     }
 
+    private void OnDamage(int health, int maxHealth)
+    {
+        estadoActual.DañoRecibido();
+    }
 }
