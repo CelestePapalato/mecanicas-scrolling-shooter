@@ -24,19 +24,13 @@ public class PlayerShooterMech : PlayerController
         }
     }
 
-    protected override void OnMove(InputValue inputValue)
-    {
-        base.OnMove(inputValue);
-
-    }
-
-    protected override void OnAttack()
+    public override void Attack()
     {
         if (!isActive) { return; }
         Debug.Log("ATACOOOO SLAAAAASH");
     }
 
-    protected override void OnEvade()
+    public override void Evade()
     {
         if (!isActive) { return; }
         Debug.Log("Esquivo >:P >:P");

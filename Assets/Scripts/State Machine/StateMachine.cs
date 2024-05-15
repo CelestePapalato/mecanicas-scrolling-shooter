@@ -19,7 +19,7 @@ public class StateMachine : MonoBehaviour
 
         if (estadoActual)
         {
-            estadoActual.Entrar(this);
+            CambiarEstado(estadoActual);
         }
         else
         {

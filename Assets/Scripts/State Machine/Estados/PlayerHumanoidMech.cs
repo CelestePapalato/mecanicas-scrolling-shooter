@@ -15,13 +15,13 @@ public class PlayerHumanoidMech : PlayerController
         }
     }
 
-    protected override void OnAttack()
+    public override void Attack()
     {
         if (!isActive) { return; }
         Debug.Log("Ataco bambam");
     }
 
-    protected override void OnEvade()
+    public override void Evade()
     {
         if (!isActive) { return; }
         Debug.Log("Esquivo esquivo");

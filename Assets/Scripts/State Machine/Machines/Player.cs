@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Player : StateMachine, IBuffable
 {
@@ -11,6 +12,7 @@ public class Player : StateMachine, IBuffable
 
     Health healthComponent;
     Movement movement;
+    PlayerController controller;
 
     public UnityEvent OnDead;
 
@@ -68,8 +70,44 @@ public class Player : StateMachine, IBuffable
         resetMovementParameters();
     }
 
+    public override void CambiarEstado(Estado nuevoEstado)
+    {
+        base.CambiarEstado(nuevoEstado);
+        controller = (PlayerController)nuevoEstado;
+    }
+
+    private void OnMove(InputValue inputValue)
+    {
+        movement.Direction = inputValue.Get<Vector2>();
+        if (controller)
+        {
+            controller.Move(inputValue);
+        }
+    }
+
+    private void OnAttack()
+    {
+        if (controller)
+        {
+            controller.Attack();
+        }
+    }
+
+    private void OnEvade()
+    {
+        if (controller)
+        {
+            controller.Evade();
+        }
+    }
+
     private void OnDamage(int health, int maxHealth)
     {
         estadoActual.DañoRecibido();
+    }
+
+    private void OnTransform()
+    {
+
     }
 }

@@ -26,14 +26,16 @@ public abstract class PlayerController : Estado
         isActive = false;
     }
 
-    protected virtual void OnMove(InputValue inputValue)
+    public virtual void Move(InputValue inputValue)
     {
+        /*
         if(movement &&  isActive) {
             movement.Direction = inputValue.Get<Vector2>();
         }
+        */
     }
 
-    protected abstract void OnAttack();
+    public abstract void Attack();
 
-    protected abstract void OnEvade();
+    public abstract void Evade();
 }
