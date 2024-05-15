@@ -57,7 +57,10 @@ public class StateMachine : MonoBehaviour
         {
             estadoActual = primerEstado;
         }
-        estadoActual.Entrar(this);
+        if (!estadoActual)
+        {
+            estadoActual.Entrar(this);
+        }
     }
 
     private void OnDisable()
