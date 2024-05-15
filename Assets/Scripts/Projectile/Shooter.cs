@@ -9,6 +9,7 @@ public class Shooter : MonoBehaviour
 
     public bool shootProjectile(Vector2 direction)
     {
+        if (!spawnPoint) { return false; }
         Projectile projectile = Instantiate(projectilePrefab, spawnPoint);
         if (projectile)
         {
@@ -16,5 +17,13 @@ public class Shooter : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool shootProjectile(float degreesAngle)
+    {
+        Vector2 direction = new Vector2();
+        direction.x = Mathf.Cos(degreesAngle);
+        direction.y = Mathf.Sin(degreesAngle);
+        return shootProjectile(direction);
     }
 }
