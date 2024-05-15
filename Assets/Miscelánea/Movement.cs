@@ -83,9 +83,7 @@ public class Movement : MonoBehaviour
         Vector2 targetSpeed = currentDirection * currentSpeed * Time.fixedDeltaTime;
         if (targetVelocity.magnitude > 0)
         {
-            //float t = currentSpeed / targetVelocity.magnitude;
-            //currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, t);
-            if(currentVelocity != Vector2.zero)
+            if (currentVelocity != Vector2.zero)
             {
                 currentVelocity = Vector2.SmoothDamp(currentVelocity, currentDirection.normalized, ref DAMP_currentVelocity, smoothTime);
             }
@@ -93,8 +91,6 @@ public class Movement : MonoBehaviour
             {
                 currentVelocity = currentDirection.normalized;
             }
-
-            //currentVelocity = Vector2.Lerp(currentVelocity, currentDirection, smoothTime * Time.fixedDeltaTime);
         }
         Debug.Log(currentVelocity * currentSpeed);
         rb.MovePosition(rb.position + currentVelocity * currentSpeed * Time.deltaTime);
