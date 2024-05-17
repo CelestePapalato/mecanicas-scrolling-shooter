@@ -9,8 +9,8 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     [SerializeField] float invincibilityTime;
     public UnityAction<int, int> HealthUpdate;
     public UnityAction NoHealth;
-    public UnityAction InvincibilityStarted;
-    public UnityAction InvincibilityFinished;
+    public UnityAction<int, int> Damaged;
+    public UnityAction<int, int> Healed;
 
     int health;
     bool invincibility = false;
@@ -22,7 +22,14 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         health = maxHealth;
         col = GetComponent<Collider2D>();
         rb = GetComponentInParent<Rigidbody2D>();
-        HealthUpdate.Invoke(health, maxHealth);
+    }
+
+    private void Start()
+    {
+        if (HealthUpdate != null)
+        {
+            HealthUpdate(health, maxHealth);
+        }
     }
 
     public void Heal(int healPoints)
@@ -31,6 +38,7 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         if(HealthUpdate != null)
         {
             HealthUpdate(health, maxHealth);
+            Healed(health, maxHealth);
         }
     }
 
@@ -42,6 +50,7 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         }
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
         HealthUpdate.Invoke(health, maxHealth);
+        Damaged.Invoke(health, maxHealth);
         StartCoroutine(invincibilityEnabler());
         if (health <= 0 && NoHealth != null)
         {
@@ -61,10 +70,8 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     {
         invincibility = true;
         col.enabled = false;
-        if(InvincibilityStarted != null) { InvincibilityStarted(); }
         yield return new WaitForSeconds(invincibilityTime);
         invincibility = false;
         col.enabled = true;
-        if (InvincibilityFinished != null) { InvincibilityFinished(); }
     }
 }
