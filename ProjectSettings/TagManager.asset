@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Player Hurtbox
@@ -16,8 +16,8 @@ TagManager:
   - Player Sword
   - Enemy Hurtbox
   - Projectile
-  - 
-  - 
+  - Item
+  - NPC
   - 
   - 
   - 

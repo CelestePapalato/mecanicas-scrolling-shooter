@@ -43,7 +43,6 @@ public class Expression : MonoBehaviour
     private void IsLowHealth(int health, int maxHealth)
     {
         isLowHealth = health * 100f / maxHealth <= lowHealth;
-        Debug.Log(isLowHealth);
         if (isLowHealth && !lowHealthCoroutineRunning)
         {
             ChangeShaderTexture(damaged);

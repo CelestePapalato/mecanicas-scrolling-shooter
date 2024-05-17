@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
 
     public float MaxSpeed
     {
-        get => maxSpeed;
+        get => maxSpeed * speedMultiplier;
         set
         {
             if (value > 0)

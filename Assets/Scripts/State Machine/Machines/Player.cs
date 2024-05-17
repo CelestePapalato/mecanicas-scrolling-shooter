@@ -69,12 +69,12 @@ public class Player : StateMachine, IBuffable
 
     public void SpeedPowerUp(float multiplier, float time)
     {
-        StopCoroutine(nameof(SpeedPowerUpEnabler));
         multiplier = Mathf.Max(multiplier, 1f);
         if (multiplier == 1)
         {
             return;
         }
+        StopCoroutine(nameof(SpeedPowerUpEnabler));
         modifySpeed(multiplier);
         StartCoroutine(SpeedPowerUpEnabler(time));
     }
