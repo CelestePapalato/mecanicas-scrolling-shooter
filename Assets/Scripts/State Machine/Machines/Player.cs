@@ -23,8 +23,10 @@ public class Player : StateMachine, IBuffable
     private float damageMultiplier = 1f;
     public float DamageMultiplier {  get { return damageMultiplier; } }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         movement = GetComponent<Movement>();
         healthComponent = GetComponent<Health>();
         playerInput = GetComponent<PlayerInput>();
@@ -32,12 +34,13 @@ public class Player : StateMachine, IBuffable
         {
             healthComponent = GetComponentInChildren<Health>();
         }
-        healthComponent.HealthUpdate += OnDamage;
+        healthComponent.Damaged += OnDamage;
         healthComponent.NoHealth += Dead;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (attackInput)
         {
             controller?.Attack();
@@ -65,7 +68,6 @@ public class Player : StateMachine, IBuffable
     {
         movement.Direction = Vector2.zero;
         OnDead.Invoke();
-        Debug.Log("aarr");
         playerInput.enabled = false;
         this.enabled = false;
     }

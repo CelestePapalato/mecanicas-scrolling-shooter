@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: 191553687}
   - component: {fileID: 191553686}
   - component: {fileID: 191553683}
-  - component: {fileID: 191553691}
   - component: {fileID: 191553692}
+  - component: {fileID: 191553691}
   - component: {fileID: 191553694}
   - component: {fileID: 191553695}
   m_Layer: 3
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831a01f6773dff5438ce18e8028b1f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primerEstado: {fileID: 191553692}
+  primerEstado: {fileID: 191553691}
   estadoActual: {fileID: 0}
   OnDead:
     m_PersistentCalls:

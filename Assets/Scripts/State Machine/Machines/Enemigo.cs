@@ -11,8 +11,9 @@ public class Enemigo : StateMachine
     Vector2 destination;
     Health healthComponent;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         healthComponent = GetComponentInChildren<Health>();
         if (position)
         {
@@ -24,9 +25,9 @@ public class Enemigo : StateMachine
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
     private void moveTowardsDestination()
