@@ -9,6 +9,8 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     [SerializeField] float invincibilityTime;
     public UnityAction<int, int> HealthUpdate;
     public UnityAction NoHealth;
+    public UnityAction InvincibilityStarted;
+    public UnityAction InvincibilityFinished;
 
     int health;
     bool invincibility = false;
@@ -59,8 +61,10 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     {
         invincibility = true;
         col.enabled = false;
+        if(InvincibilityStarted != null) { InvincibilityStarted(); }
         yield return new WaitForSeconds(invincibilityTime);
         invincibility = false;
         col.enabled = true;
+        if (InvincibilityFinished != null) { InvincibilityFinished(); }
     }
 }
