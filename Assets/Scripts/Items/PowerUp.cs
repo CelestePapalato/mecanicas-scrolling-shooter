@@ -8,6 +8,7 @@ public class PowerUp : ScriptableObject, IBuff
 {
     [SerializeField] int _healPoints;
     [SerializeField] float _speedMultiplier;
+    [SerializeField] float _damageMultiplier;
     [SerializeField] float _buffTime;
 
     public void Buff(object o)
@@ -21,6 +22,7 @@ public class PowerUp : ScriptableObject, IBuff
         if (player)
         {
             player.SpeedPowerUp(_speedMultiplier, _buffTime);
+            player.DamagePowerUp(_damageMultiplier, _buffTime);
         }
     }
 }

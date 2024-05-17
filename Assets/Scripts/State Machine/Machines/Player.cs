@@ -89,7 +89,7 @@ public class Player : StateMachine, IBuffable
         movement.SpeedMultiplier = 1f;
     }
 
-    private void DamagePowerUp(float multiplier, float time)
+    public void DamagePowerUp(float multiplier, float time)
     {
         multiplier = Mathf.Max(multiplier, 1f);
         if (multiplier == 1f)
