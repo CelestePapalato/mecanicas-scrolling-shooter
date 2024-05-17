@@ -22,6 +22,10 @@ public class Movement : MonoBehaviour
     [SerializeField]
     [Range(0, .15f)] float smoothTime;
 
+    [Header("Collisions")]
+    [SerializeField] ContactFilter2D movementFilter;
+    [SerializeField] float collisionOffset;
+
     [Header("Debug")]
     [SerializeField]
     float currentSpeed = 0;
@@ -72,6 +76,8 @@ public class Movement : MonoBehaviour
 
     Rigidbody2D rb;
 
+    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -80,6 +86,19 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         move();
+        bool success = CheckCollisions(currentVelocity);
+        if(!success)
+        {
+            Vector2 newDirection = currentDirection;
+            newDirection.x = 0;
+            success = CheckCollisions(newDirection);
+            if(!success)
+            {
+                newDirection = currentDirection;
+                newDirection.y = 0;
+                success = CheckCollisions(newDirection);
+            }
+        }
     }
 
     private void move()
@@ -110,7 +129,31 @@ public class Movement : MonoBehaviour
                 currentVelocity = currentDirection.normalized;
             }
         }
-        rb.MovePosition(rb.position + currentVelocity * currentSpeed * Time.deltaTime);
+        //rb.MovePosition(rb.position + currentVelocity * currentSpeed * Time.deltaTime);
+    }
+
+    private bool CheckCollisions(Vector2 direction)
+    {
+        int count = rb.Cast(
+            direction,
+            movementFilter,
+            castCollisions,
+            currentSpeed * Time.fixedDeltaTime + collisionOffset
+            );
+
+        if(count == 0)
+        {
+            rb.MovePosition(rb.position + direction * currentSpeed * Time.deltaTime);
+            return true;
+        }
+        else
+        {
+            foreach(RaycastHit2D hit in castCollisions)
+            {
+                Debug.Log(hit.ToString());
+            }
+            return false;
+        }
     }
 
     public void DontMove()
