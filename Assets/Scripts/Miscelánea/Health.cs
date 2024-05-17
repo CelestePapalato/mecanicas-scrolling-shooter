@@ -51,11 +51,13 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
         HealthUpdate.Invoke(health, maxHealth);
         Damaged.Invoke(health, maxHealth);
-        StartCoroutine(invincibilityEnabler());
         if (health <= 0 && NoHealth != null)
         {
+            col.enabled = false;
             NoHealth();
+            return;
         }
+        StartCoroutine(invincibilityEnabler());
     }
 
     public void Hit(IDamageDealer damageDealer)

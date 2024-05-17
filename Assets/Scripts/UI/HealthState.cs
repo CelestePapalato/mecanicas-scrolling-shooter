@@ -43,6 +43,7 @@ public class Expression : MonoBehaviour
             materials[i] = images[i].material;
             materials[i].SetFloat("_FlashAmount", 0);
         }
+        ChangeShaderTexture(normal.texture);
     }
 
     private void IsLowHealth(int health, int maxHealth)
@@ -51,6 +52,7 @@ public class Expression : MonoBehaviour
         Debug.Log(isLowHealth);
         if (isLowHealth && !lowHealthCoroutineRunning)
         {
+            ChangeShaderTexture(damaged.texture);
             StopAllCoroutines();
             StartCoroutine(LowHealth());
         }
@@ -58,7 +60,7 @@ public class Expression : MonoBehaviour
 
     private void ChangeShaderTexture(Texture2D tex)
     {
-        expressionImage.material.mainTexture = tex;
+        expressionImage.material.SetTexture("_MainTex", tex);
     }
 
     private void Damage(int health, int maxHealth)

@@ -13,6 +13,7 @@ public class Player : StateMachine, IBuffable
     Health healthComponent;
     Movement movement;
     PlayerController controller;
+    PlayerInput playerInput;
 
     public UnityEvent OnDead;
 
@@ -23,6 +24,7 @@ public class Player : StateMachine, IBuffable
     {
         movement = GetComponent<Movement>();
         healthComponent = GetComponent<Health>();
+        playerInput = GetComponent<PlayerInput>();
         if (!healthComponent)
         {
             healthComponent = GetComponentInChildren<Health>();
@@ -60,6 +62,8 @@ public class Player : StateMachine, IBuffable
     {
         movement.Direction = Vector2.zero;
         OnDead.Invoke();
+        Debug.Log("aarr");
+        playerInput.enabled = false;
         this.enabled = false;
     }
 
