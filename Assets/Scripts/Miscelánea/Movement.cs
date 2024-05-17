@@ -85,23 +85,23 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        move();
-        bool success = CheckCollisions(currentVelocity);
+        UpdateCurrentVelocityDirection();
+        bool success = MoveAndSlide(currentVelocity);
         if(!success)
         {
             Vector2 newDirection = currentDirection;
             newDirection.x = 0;
-            success = CheckCollisions(newDirection);
+            success = MoveAndSlide(newDirection);
             if(!success)
             {
                 newDirection = currentDirection;
                 newDirection.y = 0;
-                success = CheckCollisions(newDirection);
+                success = MoveAndSlide(newDirection);
             }
         }
     }
 
-    private void move()
+    private void UpdateCurrentVelocityDirection()
     {
         Vector2 targetVelocity = currentDirection * MaxSpeed;
         float _acceleration = 0;
@@ -132,7 +132,7 @@ public class Movement : MonoBehaviour
         //rb.MovePosition(rb.position + currentVelocity * currentSpeed * Time.deltaTime);
     }
 
-    private bool CheckCollisions(Vector2 direction)
+    private bool MoveAndSlide(Vector2 direction)
     {
         int count = rb.Cast(
             direction,
@@ -150,7 +150,7 @@ public class Movement : MonoBehaviour
         {
             foreach(RaycastHit2D hit in castCollisions)
             {
-                Debug.Log(hit.ToString());
+                Debug.Log(hit);
             }
             return false;
         }
