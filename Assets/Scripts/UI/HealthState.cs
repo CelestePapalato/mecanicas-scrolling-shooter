@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class Expression : MonoBehaviour
 {
     [SerializeField] Health health;
-    [SerializeField] float lowHealth;
+    [SerializeField][Tooltip("Porcentaje")] float lowHealth;
     [SerializeField] Image expressionImage;
     [SerializeField] Sprite normal;
     [SerializeField] Sprite damaged;
-    [SerializeField] float timeDamaged;
 
     Image[] images;
 
@@ -24,20 +23,32 @@ public class Expression : MonoBehaviour
             health.InvincibilityStarted += Damage;
         }
         images = GetComponents<Image>();
+        if(expressionImage != null )
+        {
+            Normal();
+        }
     }
 
     private void OnHealthUpdate(int health, int maxhealth)
     {
+        if(health/maxhealth <= lowHealth)
+        {
 
+        }
+    }
+
+    private void changeShaderTexture(Texture2D tex)
+    {
+        expressionImage.material.mainTexture = tex;
     }
 
     private void Damage()
     {
-        expressionImage.sprite = damaged;
+        changeShaderTexture(damaged.texture);
     }
 
     private void Normal()
     {
-        expressionImage.sprite = normal;
+        changeShaderTexture(normal.texture);
     }
 }
