@@ -6,6 +6,8 @@ public class StateMachine : MonoBehaviour
 {
     [SerializeField] protected Estado primerEstado;
 
+    [Header("Debug")]
+    [SerializeField]
     protected Estado estadoActual;
 
     protected Estado primerEstadoBuffer;

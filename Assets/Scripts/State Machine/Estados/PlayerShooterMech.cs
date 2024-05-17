@@ -20,6 +20,7 @@ public class PlayerShooterMech : PlayerController
     {
         if (!isActive || !canAttack) { return; }
         Debug.Log("Ataco bambam");
+        shooterComponent?.ShootProjectile(shotVector, GetPlayerDamageMultiplier());
         base.Attack();
     }
 

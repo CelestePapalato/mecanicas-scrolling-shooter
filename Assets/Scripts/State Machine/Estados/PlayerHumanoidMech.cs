@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerHumanoidMech : PlayerController
 {
+    [SerializeField]
     Damage sword;
 
     private void Awake()
     {
-        sword = GetComponentInChildren<Damage>();
+        if(!sword)
+        {
+            sword = GetComponentInChildren<Damage>();
+        }
     }
 
     public override void Move(InputValue inputValue) { }

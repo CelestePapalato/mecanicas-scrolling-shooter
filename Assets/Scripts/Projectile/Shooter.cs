@@ -7,7 +7,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] Transform spawnPoint;
 
-    public bool shootProjectile(Vector2 direction, float damageMultiplier)
+    public bool ShootProjectile(Vector2 direction, float damageMultiplier)
     {
         if (!spawnPoint) { return false; }
         Projectile projectile = Instantiate(projectilePrefab, spawnPoint);
@@ -21,11 +21,11 @@ public class Shooter : MonoBehaviour
         return false;
     }
 
-    public bool shootProjectile(float degreesAngle, float damageMultiplier)
+    public bool ShootProjectile(float degreesAngle, float damageMultiplier)
     {
         Vector2 direction = new Vector2();
         direction.x = Mathf.Cos(degreesAngle);
         direction.y = Mathf.Sin(degreesAngle);
-        return shootProjectile(direction, damageMultiplier);
+        return ShootProjectile(direction, damageMultiplier);
     }
 }

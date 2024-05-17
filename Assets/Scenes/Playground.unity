@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 191553691}
   - component: {fileID: 191553692}
   - component: {fileID: 191553694}
+  - component: {fileID: 191553695}
   m_Layer: 3
   m_Name: Player example
   m_TagString: Untagged
@@ -244,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerEstado: {fileID: 191553692}
+  estadoActual: {fileID: 0}
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -371,6 +373,7 @@ MonoBehaviour:
   maxSpeed: 3
   attackCooldown: 1
   evadeCooldown: 0.7
+  sword: {fileID: 230907752}
 --- !u!114 &191553692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +446,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &191553695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191553681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2002feb7792cbb14195c53d97e70cdc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8171913191616450729, guid: 58ac75a02624f0045a8d47ad70df77a1, type: 3}
+  spawnPoint: {fileID: 1471982270}
 --- !u!1 &230907750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,7 +1486,7 @@ Transform:
   m_GameObject: {fileID: 1471982269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.215, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
