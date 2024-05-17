@@ -11,11 +11,10 @@ public class Expression : MonoBehaviour
     [Range(0f, 1f)] float dyeAmount;
     [SerializeField] float timeToDye;
     [SerializeField] Image expressionImage;
-    [SerializeField] Sprite normal;
-    [SerializeField] Sprite damaged;
+    [SerializeField] Material normal;
+    [SerializeField] Material damaged;
 
     Image[] images;
-    Material[] materials;
 
     float currentDyeAmount;
 
@@ -37,13 +36,8 @@ public class Expression : MonoBehaviour
 
     private void Init()
     {
-        materials = new Material[images.Length];
-        for (int i = 0; i < images.Length; i++)
-        {
-            materials[i] = images[i].material;
-            materials[i].SetFloat("_FlashAmount", 0);
-        }
-        ChangeShaderTexture(normal.texture);
+        SetFlashAmount(0f);
+        ChangeShaderTexture(normal);
     }
 
     private void IsLowHealth(int health, int maxHealth)
@@ -52,22 +46,22 @@ public class Expression : MonoBehaviour
         Debug.Log(isLowHealth);
         if (isLowHealth && !lowHealthCoroutineRunning)
         {
-            ChangeShaderTexture(damaged.texture);
+            ChangeShaderTexture(damaged);
             StopAllCoroutines();
             StartCoroutine(LowHealth());
         }
     }
 
-    private void ChangeShaderTexture(Texture2D tex)
+    private void ChangeShaderTexture(Material mat)
     {
-        expressionImage.material.SetTexture("_MainTex", tex);
+        expressionImage.material = mat;
     }
 
     private void Damage(int health, int maxHealth)
     {
         if (!isLowHealth || !lowHealthCoroutineRunning)
         {
-            ChangeShaderTexture(damaged.texture);
+            ChangeShaderTexture(damaged);
             StartCoroutine(DamageFlasher(dyeAmount, 0f, true));
         }
     }
@@ -76,7 +70,7 @@ public class Expression : MonoBehaviour
     {
         if(!isLowHealth)
         {
-            ChangeShaderTexture(normal.texture);
+            ChangeShaderTexture(normal);
             StopAllCoroutines();
             SetFlashAmount(0);
             lowHealthCoroutineRunning = false;
@@ -98,7 +92,7 @@ public class Expression : MonoBehaviour
         }
         if (changeSpriteAtEnd)
         {
-            ChangeShaderTexture(normal.texture);
+            ChangeShaderTexture(normal);
         }
     }
 
@@ -117,10 +111,11 @@ public class Expression : MonoBehaviour
 
     private void SetFlashAmount(float flashAmount)
     {
-        for (int i = 0; i < materials.Length; i++)
+        foreach(Image image in images)
         {
-
-            materials[i].SetFloat("_FlashAmount", flashAmount);
+            image.material.SetFloat("_FlashAmount", flashAmount);
         }
+        normal.SetFloat("_FlashAmount", flashAmount);
+        damaged.SetFloat("_FlashAmount", flashAmount);
     }
 }
