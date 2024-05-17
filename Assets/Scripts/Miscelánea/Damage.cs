@@ -10,7 +10,11 @@ public class Damage : MonoBehaviour, IDamageDealer
 
     public UnityAction DamageDealed;
 
-    public int DamagePoints { get { return damagePoints; } }
+    public int DamagePoints { get { return (int) (damagePoints * damageMultiplier); } }
+
+    private float damageMultiplier = 1f;
+    public float DamageMultiplier { get => damageMultiplier; set => damageMultiplier = value; }
+
     public float Impulse { get {  return impulse; } }
     public Vector2 Position { get { return transform.position; } }
 

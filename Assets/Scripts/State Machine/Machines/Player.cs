@@ -20,6 +20,9 @@ public class Player : StateMachine, IBuffable
     bool attackInput = false;
     bool evadeInput = false;
 
+    private float damageMultiplier = 1f;
+    public float DamageMultiplier {  get { return damageMultiplier; } }
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -75,24 +78,33 @@ public class Player : StateMachine, IBuffable
             return;
         }
         StopCoroutine(nameof(SpeedPowerUpEnabler));
-        modifySpeed(multiplier);
-        StartCoroutine(SpeedPowerUpEnabler(time));
+        StartCoroutine(SpeedPowerUpEnabler(multiplier, time));
     }
 
-    private void resetMovementParameters()
-    {
-        movement.SpeedMultiplier = 1;
-    }
 
-    private void modifySpeed(float multiplier)
+    IEnumerator SpeedPowerUpEnabler(float multiplier, float time)
     {
         movement.SpeedMultiplier = multiplier;
+        yield return new WaitForSeconds(time);
+        movement.SpeedMultiplier = 1f;
     }
 
-    IEnumerator SpeedPowerUpEnabler(float time)
+    private void DamagePowerUp(float multiplier, float time)
     {
+        multiplier = Mathf.Max(multiplier, 1f);
+        if (multiplier == 1f)
+        {
+            return;
+        }
+        StopCoroutine(nameof(DamagePowerUpEnabler));
+        StartCoroutine(DamagePowerUpEnabler(multiplier, time));
+    }
+
+    IEnumerator DamagePowerUpEnabler(float multiplier, float time)
+    {
+        damageMultiplier = multiplier;
         yield return new WaitForSeconds(time);
-        resetMovementParameters();
+        damageMultiplier = 1f;
     }
 
     private void OnMove(InputValue inputValue)

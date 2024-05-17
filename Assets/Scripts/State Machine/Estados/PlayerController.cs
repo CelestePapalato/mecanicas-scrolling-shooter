@@ -36,6 +36,19 @@ public abstract class PlayerController : Estado
         movement = GetComponent<Movement>();
     }
 
+    protected float GetPlayerDamageMultiplier()
+    {
+        Player player = personaje as Player;
+        if (player)
+        {
+            return player.DamageMultiplier;
+        }
+        else
+        {
+            return 1f;
+        }
+    }
+
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);

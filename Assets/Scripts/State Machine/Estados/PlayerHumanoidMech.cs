@@ -5,11 +5,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerHumanoidMech : PlayerController
 {
+    Damage sword;
+
+    private void Awake()
+    {
+        sword = GetComponentInChildren<Damage>();
+    }
+
     public override void Move(InputValue inputValue) { }
 
     public override void Attack()
     {
         if (!isActive || !canAttack) { return; }
+        sword.DamageMultiplier = GetPlayerDamageMultiplier();
         Debug.Log("ATACOOOO SLAAAAASH");
         base.Attack();
     }
