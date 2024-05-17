@@ -15,6 +15,7 @@ public class StateMachine : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(primerEstado.ToString());
         if (!primerEstado)
         {
             primerEstado = GetComponent<Estado>();
