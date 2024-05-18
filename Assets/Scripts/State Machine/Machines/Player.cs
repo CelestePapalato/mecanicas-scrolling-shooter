@@ -134,7 +134,6 @@ public class Player : StateMachine, IBuffable
 
     private void OnTransform()
     {
-        Debug.Log("Por el poder del prisma lunar");
         PlayerController currentMecha = controller;
         if (!playerTransform || currentMecha == playerTransform) { return; }
         CambiarEstado(playerTransform);

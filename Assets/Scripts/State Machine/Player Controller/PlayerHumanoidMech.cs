@@ -23,14 +23,12 @@ public class PlayerHumanoidMech : PlayerController
     {
         if (!isActive || !canAttack) { return; }
         sword.DamageMultiplier = GetPlayerDamageMultiplier();
-        Debug.Log("ATACOOOO SLAAAAASH");
         base.Attack();
     }
 
     public override void Evade()
     {
         if (!isActive || !canEvade) { return; }
-        Debug.Log("Esquivo esquivo");
         base.Evade();
     }
 }

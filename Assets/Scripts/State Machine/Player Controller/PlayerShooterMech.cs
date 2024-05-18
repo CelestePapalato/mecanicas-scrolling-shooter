@@ -20,7 +20,6 @@ public class PlayerShooterMech : PlayerController
     public override void Attack()
     {
         if (!isActive || !canAttack) { return; }
-        Debug.Log("Ataco bambam");
         shooterComponent?.ShootProjectile(shotVector, GetPlayerDamageMultiplier());
         base.Attack();
     }
@@ -28,7 +27,6 @@ public class PlayerShooterMech : PlayerController
     public override void Evade()
     {
         if (!isActive || !canEvade) { return; }
-        Debug.Log("Esquivo >:P >:P");
         base.Evade();
     }
 }

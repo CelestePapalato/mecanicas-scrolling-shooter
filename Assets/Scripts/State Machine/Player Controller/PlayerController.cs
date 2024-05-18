@@ -75,7 +75,7 @@ public abstract class PlayerController : Estado
 
     public virtual void Attack()
     {
-        if (!canAttack) { return; }
+        if (!canAttack || attackCooldown <= 0) { return; }
 
         StopCoroutine(ControlAttackCooldown());
         StartCoroutine(ControlAttackCooldown());
@@ -84,7 +84,7 @@ public abstract class PlayerController : Estado
 
     public virtual void Evade()
     {
-        if (!canEvade) { return; }
+        if (!canEvade || evadeCooldown <= 0) { return; }
         StopCoroutine(ControlEvadeCooldown());
         StartCoroutine(ControlEvadeCooldown());
         animator?.SetTrigger("Evade");
