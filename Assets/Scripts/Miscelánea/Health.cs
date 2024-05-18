@@ -89,7 +89,7 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     public void UpdateInvincibility(bool value)
     {
         StopCoroutine(invincibilityEnabler());
-        invincibility = true;
+        invincibility = value;
         col.enabled = !value;
     }
 
