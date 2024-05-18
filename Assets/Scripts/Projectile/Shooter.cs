@@ -10,7 +10,7 @@ public class Shooter : MonoBehaviour
     public bool ShootProjectile(Vector2 direction, float damageMultiplier)
     {
         if (!spawnPoint) { return false; }
-        Projectile projectile = Instantiate(projectilePrefab, spawnPoint);
+        Projectile projectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
         if (projectile)
         {
             projectile.Direction = direction;

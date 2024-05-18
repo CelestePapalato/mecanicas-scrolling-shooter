@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  attackCooldown: 0.3
+  attackCooldown: 0.4
   evadeCooldown: 1.5
   shotVector: {x: 1, y: 0}
 --- !u!70 &191553693
@@ -496,7 +496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &230907751
 Transform:
   m_ObjectHideFlags: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b636a43868aeaa348a6781937a38121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePoints: 0
+  damagePoints: 1
   impulse: 0
 --- !u!70 &230907753
 CapsuleCollider2D:
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b636a43868aeaa348a6781937a38121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePoints: 3
+  damagePoints: 1
   impulse: 0
 --- !u!50 &1157474010
 Rigidbody2D:
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
-  invincibilityTime: 0
+  invincibilityTime: 0.36
 --- !u!61 &1166668262
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2002feb7792cbb14195c53d97e70cdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8171913191616450729, guid: c75cfae63047ff74c9f1160a69c5d72a, type: 3}
+  projectilePrefab: {fileID: 1482676215428818467, guid: b54a69b530267ec448e791c3d8ebee37, type: 3}
   spawnPoint: {fileID: 2103291760}
 --- !u!114 &2103291763
 MonoBehaviour:
