@@ -20,8 +20,6 @@ public class MoveTowards : Estado
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        Vector2 direction = destination.position - transform.position;
-        movement.Direction = direction;
     }
 
     public override void ActualizarFixed()
@@ -30,6 +28,11 @@ public class MoveTowards : Estado
         if(Mathf.Abs((destination.position - transform.position).magnitude) <= tolerance)
         {
             personaje.CambiarEstado(nextState);
+        }
+        else
+        {
+            Vector2 direction = destination.position - transform.position;
+            movement.Direction = direction;
         }
     }
 
