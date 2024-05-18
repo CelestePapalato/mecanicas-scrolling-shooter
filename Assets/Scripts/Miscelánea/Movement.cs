@@ -11,7 +11,7 @@ public class ExtendedMaths
     }
 }
 
-
+[RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
     [SerializeField] float maxSpeed;
