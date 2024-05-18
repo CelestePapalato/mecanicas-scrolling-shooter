@@ -38,6 +38,9 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         if(HealthUpdate != null)
         {
             HealthUpdate(health, maxHealth);
+        }
+        if(Healed != null)
+        {
             Healed(health, maxHealth);
         }
     }
@@ -49,8 +52,14 @@ public class Health : MonoBehaviour, IDamageable, IHittable
             return;
         }
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
-        HealthUpdate.Invoke(health, maxHealth);
-        Damaged.Invoke(health, maxHealth);
+        if (HealthUpdate != null)
+        {
+            HealthUpdate(health, maxHealth);
+        }
+        if(Damaged != null)
+        {
+            Damaged.Invoke(health, maxHealth);
+        }
         if (health <= 0 && NoHealth != null)
         {
             col.enabled = false;
