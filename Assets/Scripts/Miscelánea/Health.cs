@@ -76,4 +76,9 @@ public class Health : MonoBehaviour, IDamageable, IHittable
         invincibility = false;
         col.enabled = true;
     }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 }

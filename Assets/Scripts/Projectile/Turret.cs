@@ -10,22 +10,68 @@ public class Turret : Estado
     [SerializeField] float fireRate;
     [SerializeField] float startAngle;
     [SerializeField] float endAngle;
-    [SerializeField] float rotationSpeed;
+    [SerializeField] float period;
 
     Shooter shooterComponent;
+
+    [Header("Debug")]
+    [SerializeField]
+    float currentAngle;
+    [SerializeField]
+    float targetAngle;
+    [SerializeField]
+    float shootingAngle;
+
+    float elapsedTime = 0f;
 
     private void Awake()
     {
         shooterComponent = GetComponent<Shooter>();
+        currentAngle = startAngle;
+        targetAngle = endAngle;
     }
 
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
+        elapsedTime = 0f;
+        InvokeRepeating(nameof(StartShooting), 0, fireRate);
     }
 
     public override void Salir()
     {
         base.Salir();
+        CancelInvoke();
     }
+
+    public override void ActualizarFixed()
+    {
+        base.ActualizarFixed();
+        float diff = elapsedTime;
+        elapsedTime += Time.fixedDeltaTime;
+        diff -= elapsedTime;
+        diff *= -1;
+        if (elapsedTime >= period)
+        {
+            if(Mathf.Abs(endAngle - startAngle) == 360)
+            {
+                currentAngle = startAngle;
+                targetAngle = endAngle;
+            }
+            else
+            {
+                currentAngle = shootingAngle;
+                targetAngle = (targetAngle == endAngle) ? startAngle : endAngle;
+            }
+            elapsedTime = diff;
+        }
+        shootingAngle = Mathf.Lerp(currentAngle, targetAngle, elapsedTime / period);
+        elapsedTime = Mathf.Clamp(elapsedTime, 0f, period);
+    }
+
+    private void StartShooting()
+    {
+        shooterComponent.ShootProjectile(shootingAngle, 1);
+    }
+
 }

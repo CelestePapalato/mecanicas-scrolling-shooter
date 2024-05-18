@@ -24,8 +24,8 @@ public class Shooter : MonoBehaviour
     public bool ShootProjectile(float degreesAngle, float damageMultiplier)
     {
         Vector2 direction = new Vector2();
-        direction.x = Mathf.Cos(degreesAngle);
-        direction.y = Mathf.Sin(degreesAngle);
+        direction.x = Mathf.Cos(degreesAngle * Mathf.Deg2Rad);
+        direction.y = Mathf.Sin(degreesAngle * Mathf.Deg2Rad);
         return ShootProjectile(direction, damageMultiplier);
     }
 }

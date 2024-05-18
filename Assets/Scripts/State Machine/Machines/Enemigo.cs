@@ -1,27 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemigo : StateMachine
 {
-    [SerializeField] Transform position;
-    [SerializeField] float speed;
-    [SerializeField] Estado estado;
-
-    Vector2 destination;
+    public UnityEvent OnDead;
     Health healthComponent;
 
     protected override void Awake()
     {
         base.Awake();
         healthComponent = GetComponentInChildren<Health>();
-        if (position)
+        if (healthComponent)
         {
-            destination = position.position;
-        }
-        else
-        {
-            CambiarEstado(estado);
+            healthComponent.NoHealth += Dead;
         }
     }
 
@@ -30,14 +23,9 @@ public class Enemigo : StateMachine
         base.Update();
     }
 
-    private void moveTowardsDestination()
+    private void Dead()
     {
-        Vector2 currentPosition = transform.position;
-        if (currentPosition == destination)
-        {
-            CambiarEstado(estado);
-            return;
-        }
-
+        OnDead.Invoke();
+        Destroy(gameObject);
     }
 }

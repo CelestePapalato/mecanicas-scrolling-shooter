@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primerEstado: {fileID: 191553691}
-  estadoActual: {fileID: 0}
   OnDead:
     m_PersistentCalls:
       m_Calls: []
@@ -1716,8 +1715,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2103291760}
   - component: {fileID: 2103291759}
-  - component: {fileID: 2103291758}
   - component: {fileID: 2103291761}
+  - component: {fileID: 2103291758}
+  - component: {fileID: 2103291764}
+  - component: {fileID: 2103291763}
+  - component: {fileID: 2103291762}
   m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
@@ -1851,6 +1853,56 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2103291762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103291757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2002feb7792cbb14195c53d97e70cdc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8171913191616450729, guid: 58ac75a02624f0045a8d47ad70df77a1, type: 3}
+  spawnPoint: {fileID: 2103291760}
+--- !u!114 &2103291763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103291757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf450b0fb353cdd4db2eb47320c5a592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilesPerShot: 0
+  fireRate: 0.3
+  startAngle: 0
+  endAngle: 360
+  period: 3
+  currentAngle: 0
+  targetAngle: 0
+  shootingAngle: 0
+--- !u!114 &2103291764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103291757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb845c35e2a2bc4698c0dee5b78d300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primerEstado: {fileID: 2103291763}
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
