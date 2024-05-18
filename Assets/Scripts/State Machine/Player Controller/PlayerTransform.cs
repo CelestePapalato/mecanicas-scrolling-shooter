@@ -43,6 +43,7 @@ public class PlayerTransform : PlayerController
     {
         UpdateInvincibility(false);
         personaje.CambiarEstado(target);
+        animator.ResetTrigger("Attack");
     }
 
     public override void Salir()
