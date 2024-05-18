@@ -1879,10 +1879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf450b0fb353cdd4db2eb47320c5a592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilesPerShot: 0
+  projectilesPerShot: 3
+  spreadAngle: 15
   fireRate: 0.3
-  startAngle: 0
-  endAngle: 360
+  startAngle: 142.5
+  endAngle: 217.5
   period: 3
   currentAngle: 0
   targetAngle: 0

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Turret : Estado
 {
     [SerializeField] int projectilesPerShot;
+    [SerializeField] float spreadAngle;
     [SerializeField] float fireRate;
     [SerializeField] float startAngle;
     [SerializeField] float endAngle;
@@ -71,7 +72,19 @@ public class Turret : Estado
 
     private void StartShooting()
     {
-        shooterComponent.ShootProjectile(shootingAngle, 1);
+        float stepAngle = spreadAngle / (projectilesPerShot - 1);
+        List<float> angles = new List<float>();
+        float angle = shootingAngle - spreadAngle / 2;
+        angles.Add(angle);
+        for(int i = 1; i < projectilesPerShot; i++)
+        {
+            angle += stepAngle;
+            angles.Add(angle);
+        }
+        foreach(float deg in angles)
+        {
+            shooterComponent.ShootProjectile(deg, 1);
+        }
     }
 
 }
