@@ -13,6 +13,7 @@ public class Player : StateMachine, IBuffable
     Health healthComponent;
     Movement movement;
     PlayerController controller;
+    PlayerTransform playerTransform;
     PlayerInput playerInput;
 
     public UnityEvent OnDead;
@@ -30,6 +31,7 @@ public class Player : StateMachine, IBuffable
         movement = GetComponent<Movement>();
         healthComponent = GetComponent<Health>();
         playerInput = GetComponent<PlayerInput>();
+        playerTransform = GetComponent<PlayerTransform>();
         if (!healthComponent)
         {
             healthComponent = GetComponentInChildren<Health>();
@@ -133,5 +135,9 @@ public class Player : StateMachine, IBuffable
     private void OnTransform()
     {
         Debug.Log("Por el poder del prisma lunar");
+        PlayerController currentMecha = controller;
+        if (!playerTransform || currentMecha == playerTransform) { return; }
+        CambiarEstado(playerTransform);
+        playerTransform.TransformMecha(currentMecha);
     }
 }

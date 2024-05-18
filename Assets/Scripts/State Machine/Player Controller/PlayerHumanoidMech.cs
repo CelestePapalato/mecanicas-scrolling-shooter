@@ -8,8 +8,9 @@ public class PlayerHumanoidMech : PlayerController
     [SerializeField]
     Damage sword;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if(!sword)
         {
             sword = GetComponentInChildren<Damage>();

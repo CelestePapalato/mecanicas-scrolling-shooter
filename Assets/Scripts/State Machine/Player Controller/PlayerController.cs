@@ -5,9 +5,13 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerController : Estado
 {
-    [SerializeField] float maxSpeed;
-    [SerializeField] float attackCooldown;
-    [SerializeField] float evadeCooldown;
+    [SerializeField] protected float maxSpeed;
+    [SerializeField] protected float attackCooldown;
+    [SerializeField] protected float evadeCooldown;
+
+    // # MOVEMENT ====================
+    public float MaxSpeed { get => maxSpeed; }
+    // =============================== #
 
     // # ATTACK ======================
     protected bool canAttack = true;
@@ -30,10 +34,12 @@ public abstract class PlayerController : Estado
     protected bool isActive = false;
 
     protected Movement movement;
+    protected Animator animator;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         movement = GetComponent<Movement>();
+        animator = GetComponent<Animator>();
     }
 
     protected float GetPlayerDamageMultiplier()
@@ -70,8 +76,10 @@ public abstract class PlayerController : Estado
     public virtual void Attack()
     {
         if (!canAttack) { return; }
+
         StopCoroutine(ControlAttackCooldown());
         StartCoroutine(ControlAttackCooldown());
+        animator?.SetTrigger("Attack");
     }
 
     public virtual void Evade()
@@ -79,6 +87,7 @@ public abstract class PlayerController : Estado
         if (!canEvade) { return; }
         StopCoroutine(ControlEvadeCooldown());
         StartCoroutine(ControlEvadeCooldown());
+        animator?.SetTrigger("Evade");
     }
 
     IEnumerator ControlAttackCooldown()

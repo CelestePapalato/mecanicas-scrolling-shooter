@@ -218,13 +218,13 @@ GameObject:
   - component: {fileID: 191553685}
   - component: {fileID: 191553693}
   - component: {fileID: 191553688}
+  - component: {fileID: 191553694}
   - component: {fileID: 191553687}
   - component: {fileID: 191553686}
   - component: {fileID: 191553683}
   - component: {fileID: 191553692}
   - component: {fileID: 191553691}
   - component: {fileID: 191553696}
-  - component: {fileID: 191553694}
   - component: {fileID: 191553695}
   m_Layer: 3
   m_Name: Player example
@@ -472,11 +472,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cc6da6ab8b8cd49aec5caf9854933e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
+  maxSpeed: 4
   attackCooldown: 0
   evadeCooldown: 0
-  mecha1: {fileID: 0}
-  mecha2: {fileID: 0}
+  mecha1: {fileID: 191553692}
+  mecha2: {fileID: 191553691}
   isInvincible: 1
 --- !u!1 &230907750
 GameObject:
@@ -2049,7 +2049,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103291757}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf450b0fb353cdd4db2eb47320c5a592, type: 3}
   m_Name: 

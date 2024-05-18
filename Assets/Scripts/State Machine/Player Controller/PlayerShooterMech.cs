@@ -9,8 +9,9 @@ public class PlayerShooterMech : PlayerController
 
     Shooter shooterComponent;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         shooterComponent = GetComponent<Shooter>();
     }
 

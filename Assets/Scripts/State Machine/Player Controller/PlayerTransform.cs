@@ -9,31 +9,26 @@ public class PlayerTransform : PlayerController
     [SerializeField] PlayerController mecha2;
     [SerializeField] bool isInvincible = true;
 
-    Animator animator;
-    Collider2D hurtbox;
+    Health health;
     PlayerController target;
 
-    private void Awake()
+    protected override void Awake()
     {
-        animator = GetComponent<Animator>();
-        Health health = GetComponentInChildren<Health>();
-        hurtbox = health.GetComponent<Collider2D>();
+        base.Awake();
+        health = GetComponentInChildren<Health>();
     }
 
-    public override void Move(InputValue inputValue)
-    {
-        throw new System.NotImplementedException();
-    }
+    public override void Move(InputValue inputValue) { }
 
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        UpdateInvincibility(true);
+        UpdateInvincibility(true && isInvincible);
     }
 
-    public void Transform(PlayerController currentController)
+    public void TransformMecha(PlayerController currentController)
     {
-        if(currentController == mecha1)
+        if (currentController == mecha1)
         {
             target = mecha2;
         }
@@ -41,6 +36,13 @@ public class PlayerTransform : PlayerController
         {
             target = mecha1;
         }
+        animator.SetTrigger("Transform");
+    }
+
+    public void EndTransformation()
+    {
+        UpdateInvincibility(false);
+        personaje.CambiarEstado(target);
     }
 
     public override void Salir()
@@ -51,7 +53,7 @@ public class PlayerTransform : PlayerController
 
     private void UpdateInvincibility(bool value)
     {
-        hurtbox.enabled = !value;
+        health.UpdateInvincibility(value);
     }
 
 }
