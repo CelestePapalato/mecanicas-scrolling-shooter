@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa47b05961411a447a6dbe8a08bdc21a
+guid: de43ee47e53a5464598a831a06e68b85
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,127 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0001_0
+      name: Mecha 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 128
+        height: 112
       alignment: 9
-      pivot: {x: 0.33333334, y: 0.5}
+      pivot: {x: 0.5234375, y: 0.49107143}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffadb51759ce9794191b166cd4cd70bf
-      internalID: -1705447938
+      spriteID: 0af9d9e79e5448e4f866255a04096874
+      internalID: -683689806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1
+      name: Mecha 1_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 128
         y: 0
-        width: 96
-        height: 96
+        width: 128
+        height: 112
       alignment: 9
-      pivot: {x: 0.39583334, y: 0.5}
+      pivot: {x: 0.5234375, y: 0.49107143}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ab6f3e9c7d0bd14abdb5a0956c9a84d
-      internalID: 1112069378
+      spriteID: 8869d2b7a485d9342a10875b247bb2f7
+      internalID: -88231174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_2
+      name: Mecha 1_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 0
-        width: 96
-        height: 96
+        width: 128
+        height: 112
       alignment: 9
-      pivot: {x: 0.39583334, y: 0.5}
+      pivot: {x: 0.5234375, y: 0.49107143}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76763e9b0c8fe174a9ffc68a6ca225a5
-      internalID: -327860569
+      spriteID: 98e56b9d522a3de41af5a4a5edb73e46
+      internalID: -1294640477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_3
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 96
-        height: 96
-      alignment: 9
-      pivot: {x: 0.39583334, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db97af0380cda5e4b92e6682199634a8
-      internalID: 1362111647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite-0001_4
+      name: Mecha 1_3
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 96
-        height: 96
+        width: 128
+        height: 112
       alignment: 9
-      pivot: {x: 0.39583334, y: 0.5}
+      pivot: {x: 0.5234375, y: 0.49107143}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f798f593b83744f4f813501989d7fdd4
-      internalID: 42282675
+      spriteID: 4627bb3b260943c45973151647d66ce6
+      internalID: -1282762597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_5
+      name: Mecha 1_4
       rect:
         serializedVersion: 2
-        x: 480
+        x: 512
         y: 0
-        width: 96
-        height: 96
+        width: 128
+        height: 112
       alignment: 9
-      pivot: {x: 0.39583334, y: 0.5}
+      pivot: {x: 0.5234375, y: 0.49107143}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e8101faaecaf184f9f17a3139d73a33
-      internalID: 2091845628
+      spriteID: d0c591ca43ea79b419cdef21857436d8
+      internalID: -1167302640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mecha 1_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5234375, y: 0.49107143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6540f7ef5fafc5b4bb15acb14f124e98
+      internalID: -1010453648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mecha 1_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5234375, y: 0.49107143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9368375f63c65074593ab910f2a7ca81
+      internalID: -1405658219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mecha 1_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5234375, y: 0.49107143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c399a57fb476f4f82dc43a18ddc378
+      internalID: -606798306
       vertices: []
       indices: 
       edges: []
@@ -259,12 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite-0001_0: -1705447938
-      Sprite-0001_1: 1112069378
-      Sprite-0001_2: -327860569
-      Sprite-0001_3: 1362111647
-      Sprite-0001_4: 42282675
-      Sprite-0001_5: 2091845628
+      Mecha 1_0: -683689806
+      Mecha 1_1: -88231174
+      Mecha 1_2: -1294640477
+      Mecha 1_3: -1282762597
+      Mecha 1_4: -1167302640
+      Mecha 1_5: -1010453648
+      Mecha 1_6: -1405658219
+      Mecha 1_7: -606798306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
