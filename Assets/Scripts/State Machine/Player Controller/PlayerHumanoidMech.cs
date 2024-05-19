@@ -17,8 +17,6 @@ public class PlayerHumanoidMech : PlayerController
         }
     }
 
-    public override void Move(InputValue inputValue) { }
-
     public override void Attack()
     {
         if (!isActive || !canAttack) { return; }

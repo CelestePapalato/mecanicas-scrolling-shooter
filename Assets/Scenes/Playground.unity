@@ -475,6 +475,7 @@ MonoBehaviour:
   maxSpeed: 4
   attackCooldown: 0
   evadeCooldown: 0
+  transformCooldown: 3
   mecha1: {fileID: 191553692}
   mecha2: {fileID: 191553691}
   isInvincible: 1

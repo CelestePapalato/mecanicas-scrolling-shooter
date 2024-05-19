@@ -71,7 +71,7 @@ public abstract class PlayerController : Estado
         isActive = false;
     }
 
-    public abstract void Move(InputValue inputValue);
+    public virtual void Move(InputValue inputValue) { }
 
     public virtual void Attack()
     {

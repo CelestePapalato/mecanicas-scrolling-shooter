@@ -15,8 +15,6 @@ public class PlayerShooterMech : PlayerController
         shooterComponent = GetComponent<Shooter>();
     }
 
-    public override void Move(InputValue inputValue) { }
-
     public override void Attack()
     {
         if (!isActive || !canAttack) { return; }
