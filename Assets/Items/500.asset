@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aafcb5af4aaa7e448bfdef6b33643571, type: 3}
-  m_Name: PowerUp Data
+  m_Name: 500
   m_EditorClassIdentifier: 
-  _healPoints: 10
-  _speedMultiplier: 1.5
+  _healPoints: 3
+  _speedMultiplier: 1.25
+  _damageMultiplier: 1
   _buffTime: 5
