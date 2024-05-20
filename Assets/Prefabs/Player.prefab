@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc5546d666f7284eafddefea7791954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   invincibilityTime: 1
 --- !u!70 &4158962794366444165
 CapsuleCollider2D:
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 8511892640984306651}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,7 +533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3985162147662478667}
   - component: {fileID: 7864154803769164955}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

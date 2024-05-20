@@ -16,7 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] int powerUp1Score = 500;
     [SerializeField] int powerUp2Score = 1000;
 
-    static bool gameStarted = false;
+    private static int _score = 0;
+    private static int _scorePowerUp1 = 0;
+    private static int _scorePowerUp2 = 0;
+    public static int Score { get => _score; }
+
+    static bool gameStarted = true;
     public static bool GameStarted { get => gameStarted; }
 
     static Player player;
@@ -26,24 +31,36 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameStart.gameObject.SetActive(true);
         GameObject aux = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(aux.name);
         player = aux.GetComponent<Player>();
     }
 
-    private void Update()
+    public void AddPoints(int points)
     {
-        int currentPoints = ScoreSystem.Score;
-        if (currentPoints % powerUp1Score == 0)
+        if (!gameStarted)
         {
+            return;
+        }
+        points = Mathf.Max(0, points);
+        _score += points;
+        _scorePowerUp1 += points;
+        _scorePowerUp2 += points;
+        Debug.Log(_score);
+        if (_scorePowerUp1 >= powerUp1Score)
+        {
+            _scorePowerUp1 = 0;
             player.Accept(powerUp1);
         }
-        if(currentPoints % powerUp1Score == 0)
+        if (_scorePowerUp2 >= powerUp2Score)
         {
+            _scorePowerUp2 = 0;
             player.Accept(powerUp2);
         }
     }
 
     public void StartGame()
     {
+        _score = 0;
         gameStarted = true;
         gameStart.gameObject.SetActive(false);
         StartCoroutine(AddPoints());
@@ -71,7 +88,7 @@ public class GameManager : MonoBehaviour
         while (gameStarted)
         {
             yield return new WaitForSeconds(pointRate);
-            ScoreSystem.AddPoints(1);
+            AddPoints(1);
         }
     }
 }
