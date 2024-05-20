@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     private static int _scorePowerUp2 = 0;
     public static int Score { get => _score; }
 
+    private static float _gameTime = 0;
+    public static float GameTime { get => _gameTime; }
+
     static bool gameStarted = true;
     public static bool GameStarted { get => gameStarted; }
 
@@ -40,6 +43,14 @@ public class GameManager : MonoBehaviour
         if (!pauseGameOnAwake)
         {
             StartGame();
+        }
+    }
+
+    private void Update()
+    {
+        if (gameStarted)
+        {
+            _gameTime += Time.deltaTime;
         }
     }
 
@@ -69,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _score = 0;
+        _gameTime = 0;
         gameStarted = true;
         gameStart.gameObject.SetActive(false);
         StartCoroutine(AddPoints());
