@@ -7,6 +7,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [Header("UI")]
     [SerializeField] Canvas gameStart;
     [SerializeField] Canvas gameOver;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         Time.timeScale = 0f;
         gameStart.gameObject.SetActive(true);
         GameObject aux = GameObject.FindGameObjectWithTag("Player");

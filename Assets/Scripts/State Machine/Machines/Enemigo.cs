@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class Enemigo : StateMachine
 {
-    public UnityEvent OnDead;
+    [SerializeField] int points;
+    public UnityAction OnDead;
     Health healthComponent;
 
     protected override void Awake()
@@ -25,7 +26,8 @@ public class Enemigo : StateMachine
 
     private void Dead()
     {
-        OnDead.Invoke();
         Destroy(gameObject);
+        GameManager.instance.AddPoints(points);
+        OnDead?.Invoke();
     }
 }

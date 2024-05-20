@@ -16,8 +16,7 @@ public class Player : StateMachine, IBuffable
     PlayerTransform playerTransform;
     PlayerInput playerInput;
 
-    public UnityEvent OnDead;
-
+    public UnityAction OnDead;
     bool attackInput = false;
     bool evadeInput = false;
 
@@ -69,9 +68,10 @@ public class Player : StateMachine, IBuffable
     private void Dead()
     {
         movement.Direction = Vector2.zero;
-        OnDead.Invoke();
+        OnDead?.Invoke();
         playerInput.enabled = false;
         this.enabled = false;
+        GameManager.instance.GameOver();
     }
 
     public void SpeedPowerUp(float multiplier, float time)
