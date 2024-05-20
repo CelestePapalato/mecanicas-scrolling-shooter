@@ -287,28 +287,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 341445690}
-  - component: {fileID: 341445689}
+  - component: {fileID: 341445691}
   m_Layer: 0
-  m_Name: Score System
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &341445689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341445688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a9bd611bb8ae764093ab9af59d9c701, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUp1: {fileID: 11400000, guid: 1d23999e75eb7e64aab3a54e56ef0eb4, type: 2}
-  powerUp2: {fileID: 11400000, guid: 5216634b04850e441a78e95d3638d782, type: 2}
 --- !u!4 &341445690
 Transform:
   m_ObjectHideFlags: 0
@@ -324,6 +310,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &341445691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341445688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b529b1cddaf30f4e97ccfa9c34cdc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStart: {fileID: 0}
+  gameOver: {fileID: 0}
+  pointRate: 1
+  powerUp1: {fileID: 11400000, guid: 1d23999e75eb7e64aab3a54e56ef0eb4, type: 2}
+  powerUp2: {fileID: 11400000, guid: 5216634b04850e441a78e95d3638d782, type: 2}
+  powerUp1Score: 500
+  powerUp2Score: 1000
 --- !u!1 &502793282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2404,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103291757}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9eb845c35e2a2bc4698c0dee5b78d300, type: 3}
   m_Name: 
