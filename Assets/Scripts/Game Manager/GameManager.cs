@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -79,8 +80,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        _score = 0;
-        _gameTime = 0;
         gameStarted = true;
         gameStart.gameObject.SetActive(false);
         StartCoroutine(AddPoints());
@@ -93,6 +92,13 @@ public class GameManager : MonoBehaviour
         gameOver.gameObject.SetActive(true);
         StopAllCoroutines();
         Time.timeScale = 0f;
+    }
+
+    public void RestartGame()
+    {
+        _score = 0;
+        _gameTime = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public static void BuffPlayer(PowerUp powerUp)
