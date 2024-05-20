@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] Canvas gameStart;
     [SerializeField] Canvas gameOver;
+    [SerializeField] TMP_Text scoreText;
 
     [Header("Game Parameters")]
     [SerializeField] float pointRate = 1f;
@@ -15,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] PowerUp powerUp2;
     [SerializeField] int powerUp1Score = 500;
     [SerializeField] int powerUp2Score = 1000;
+
+    [Header("Debug")]
+    [SerializeField] bool pauseGameOnAwake = true;
 
     private static int _score = 0;
     private static int _scorePowerUp1 = 0;
@@ -31,8 +36,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameStart.gameObject.SetActive(true);
         GameObject aux = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(aux.name);
         player = aux.GetComponent<Player>();
+        if (!pauseGameOnAwake)
+        {
+            StartGame();
+        }
     }
 
     public void AddPoints(int points)
@@ -45,7 +53,7 @@ public class GameManager : MonoBehaviour
         _score += points;
         _scorePowerUp1 += points;
         _scorePowerUp2 += points;
-        Debug.Log(_score);
+        scoreText.text = _score.ToString();
         if (_scorePowerUp1 >= powerUp1Score)
         {
             _scorePowerUp1 = 0;
