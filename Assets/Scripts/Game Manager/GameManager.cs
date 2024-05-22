@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] PowerUp powerUp2;
     [SerializeField] int powerUp1Score = 500;
     [SerializeField] int powerUp2Score = 1000;
+
+    [Header("Level End")]
+    [SerializeField] GameObject boss;
+    [SerializeField] float timeToReach = 80;
 
     [Header("Debug")]
     [SerializeField] bool pauseGameOnAwake = true;
@@ -50,11 +55,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    IEnumerator ControlLevelBossSpawn()
     {
-        if (gameStarted)
+        while (_gameTime <= timeToReach)
         {
             _gameTime += Time.deltaTime;
+            yield return null;
+        }
+        if (boss)
+        {
+            EnemyManager.KillAllInstances();
+            Instantiate(boss);
+        }
+        else
+        {
+            GameOver();
         }
     }
 
@@ -86,6 +101,7 @@ public class GameManager : MonoBehaviour
         gameStarted = true;
         gameStart.gameObject.SetActive(false);
         StartCoroutine(AddPoints());
+        StartCoroutine(ControlLevelBossSpawn());
         Time.timeScale = 1f;
     }
 
