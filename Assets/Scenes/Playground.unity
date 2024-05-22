@@ -4316,6 +4316,7 @@ GameObject:
   - component: {fileID: 2108278990}
   - component: {fileID: 2108278989}
   - component: {fileID: 2108278988}
+  - component: {fileID: 2108278995}
   m_Layer: 12
   m_Name: Enemigo Especial
   m_TagString: Untagged
@@ -4365,7 +4366,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108278987}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9eb845c35e2a2bc4698c0dee5b78d300, type: 3}
   m_Name: 
@@ -4493,7 +4494,7 @@ Transform:
   m_GameObject: {fileID: 2108278987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.69, y: 1.7505524, z: 0}
+  m_LocalPosition: {x: 11.25, y: 3.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4501,6 +4502,22 @@ Transform:
   - {fileID: 1545152661}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &2108278995
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108278987}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 68e4865c787df4140a048da8027d6631, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &746455977349544226
 PrefabInstance:
   m_ObjectHideFlags: 0

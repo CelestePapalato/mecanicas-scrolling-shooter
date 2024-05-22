@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
 {
     private static List<EnemyManager> currentInstances;
 
-    [SerializeField] Enemigo enemy;
+    [SerializeField] GameObject enemy;
     [SerializeField] int maxQuantity;
     [SerializeField] float spawnCooldown;
     [SerializeField] float timeNextBatch;
@@ -16,7 +16,12 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!enemy) { Destroy(gameObject); }
+        Enemigo enemigo = enemy.GetComponent<Enemigo>();
+        if (!enemigo)
+        {
+
+            Destroy(gameObject);
+        }
         currentInstances.Add(this);
     }
 
@@ -30,9 +35,14 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(spawnCooldown);
         for(int i = 0; i < maxQuantity; ++i)
         {
-            Enemigo _enemigo = Instantiate(enemy);
+            GameObject enemigo = Instantiate(enemy);
+            Enemigo _enemigo = enemigo.GetComponent<Enemigo>();
+            if (!_enemigo)
+            {
+                _enemigo = enemigo.GetComponentInChildren<Enemigo>();
+            }
             _enemigo.OnDead += EnemyDied;
-            currentEnemies.Add(enemy);
+            currentEnemies.Add(_enemigo);
         }
     }
 
