@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Resultados : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] TMP_Text puntaje;
+    [SerializeField] TMP_Text tiempo;
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        puntaje.text = GameManager.Score.ToString();
+        tiempo.text = GameManager.GameTime.ToString();
     }
 }

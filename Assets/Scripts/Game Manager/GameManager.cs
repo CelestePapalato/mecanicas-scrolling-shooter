@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public static int Score { get => _score; }
 
     private static float _gameTime = 0;
-    public static float GameTime { get => _gameTime; }
+    public static float GameTime { get => Time.timeSinceLevelLoad; }
 
     static bool gameStarted = true;
     public static bool GameStarted { get => gameStarted; }
@@ -54,12 +54,10 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
     }
-
     IEnumerator ControlLevelBossSpawn()
     {
-        while (_gameTime <= timeToReach)
+        while (Time.timeSinceLevelLoad <= timeToReach)
         {
-            _gameTime += Time.deltaTime;
             yield return null;
         }
         if (boss)
