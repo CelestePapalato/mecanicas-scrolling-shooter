@@ -26,9 +26,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemyContainer boss;
     [SerializeField] float timeToReach = 80;
 
-    [Header("Debug")]
-    [SerializeField] bool pauseGameOnAwake = true;
-
     private static int _score = 0;
     private static int _scorePowerUp1 = 0;
     private static int _scorePowerUp2 = 0;
@@ -48,10 +45,6 @@ public class GameManager : MonoBehaviour
         gameStart.gameObject.SetActive(true);
         GameObject aux = GameObject.FindGameObjectWithTag("Player");
         player = aux.GetComponent<Player>();
-        if (!pauseGameOnAwake)
-        {
-            StartGame();
-        }
     }
     IEnumerator ControlLevelBossSpawn()
     {
@@ -99,6 +92,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("Start Game")]
     public void StartGame()
     {
         gameStarted = true;
@@ -108,6 +102,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    [ContextMenu("End Game")]
     public void GameOver()
     {
         gameStarted = false;
@@ -116,6 +111,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    [ContextMenu("Restart Game")]
     public void RestartGame()
     {
         _score = 0;
