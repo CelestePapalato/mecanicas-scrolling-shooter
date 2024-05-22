@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int powerUp2Score = 1000;
 
     [Header("Level End")]
-    [SerializeField] GameObject boss;
+    [SerializeField] EnemyContainer boss;
     [SerializeField] float timeToReach = 80;
 
     [Header("Debug")]
@@ -65,12 +65,18 @@ public class GameManager : MonoBehaviour
         if (boss)
         {
             EnemyManager.KillAllInstances();
-            Instantiate(boss);
+            EnemyContainer container = Instantiate(boss);
+            container.OnDead += BossKilled;
         }
         else
         {
             GameOver();
         }
+    }
+
+    private void BossKilled(EnemyContainer boss)
+    {
+        GameOver();
     }
 
     public void AddPoints(int points)
