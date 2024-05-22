@@ -5,28 +5,24 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private static List<EnemyManager> currentInstances;
+    private static List<EnemyManager> currentInstances = new List<EnemyManager>();
 
-    [SerializeField] GameObject enemy;
+    [SerializeField] EnemyContainer enemyPrefab;
     [SerializeField] int maxQuantity;
     [SerializeField] float spawnCooldown;
     [SerializeField] float timeNextBatch;
 
-    List<Enemigo> currentEnemies = new List<Enemigo>();
+    List<EnemyContainer> currentEnemies = new List<EnemyContainer>();
 
     private void Awake()
     {
-        Enemigo enemigo = enemy.GetComponent<Enemigo>();
-        if (!enemigo)
-        {
-
-            Destroy(gameObject);
-        }
-        currentInstances.Add(this);
+        if (enemyPrefab) {  return; }
+        Destroy(gameObject);
     }
 
     private void Start()
     {
+        currentInstances.Add(this);
         StartCoroutine(SpawnBatch());
     }
 
@@ -35,14 +31,9 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(spawnCooldown);
         for(int i = 0; i < maxQuantity; ++i)
         {
-            GameObject enemigo = Instantiate(enemy);
-            Enemigo _enemigo = enemigo.GetComponent<Enemigo>();
-            if (!_enemigo)
-            {
-                _enemigo = enemigo.GetComponentInChildren<Enemigo>();
-            }
-            _enemigo.OnDead += EnemyDied;
-            currentEnemies.Add(_enemigo);
+            EnemyContainer enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            enemy.OnDead += EnemyDied;
+            currentEnemies.Add(enemy);
         }
     }
 
@@ -52,18 +43,16 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(SpawnBatch());
     }
 
-    private void EnemyDied()
+    private void EnemyDied(EnemyContainer enemy)
     {
-        for(int i = 0;i < currentEnemies.Count; ++i)
-        {
-            if (currentEnemies[i] == null) { currentEnemies.RemoveAt(i); }
-        }
+        if (!enemy) { return; }
+        currentEnemies.Remove(enemy);
         if(currentEnemies.Count == 0) { StartCoroutine(TimeOut()); }
     }
 
     private void KillAllEnemies()
     {
-        Enemigo[] enemigos = currentEnemies.ToArray();
+        EnemyContainer[] enemigos = currentEnemies.ToArray();
         for (int i = 0; i < enemigos.Length; i++)
         {
             Destroy(enemigos[i].gameObject);

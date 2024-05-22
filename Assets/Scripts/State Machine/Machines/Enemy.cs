@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemigo : StateMachine
+public class Enemy : StateMachine
 {
     [SerializeField] int points;
-    public UnityAction OnDead;
+    public UnityAction<Enemy> OnDead;
+    public UnityAction<Enemy> Destroyed;
     Health healthComponent;
 
     protected override void Awake()
@@ -28,6 +29,10 @@ public class Enemigo : StateMachine
     {
         Destroy(gameObject);
         GameManager.instance.AddPoints(points);
-        OnDead?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        OnDead?.Invoke(this);
     }
 }

@@ -28,6 +28,7 @@ public class Turret : Estado
     private void Awake()
     {
         shooterComponent = GetComponent<Shooter>();
+        shootingAngle = startAngle;
         currentAngle = startAngle;
         targetAngle = endAngle;
     }
