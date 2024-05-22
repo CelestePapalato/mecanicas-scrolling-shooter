@@ -332,7 +332,6 @@ MonoBehaviour:
   powerUp2Score: 1000
   boss: {fileID: 6796494473783435774, guid: 7ce199c5bafc8a444a8e783c9b620965, type: 3}
   timeToReach: 15
-  pauseGameOnAwake: 1
 --- !u!1 &422428825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,7 +1801,7 @@ Transform:
   m_GameObject: {fileID: 1112055599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6, y: 3.94, z: 0}
+  m_LocalPosition: {x: 1.050755, y: -2.9397914, z: -0.019897657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
