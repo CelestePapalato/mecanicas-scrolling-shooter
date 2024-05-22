@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     private static int _scorePowerUp2 = 0;
     public static int Score { get => _score; }
 
-    private static float _gameTime = 0;
     public static float GameTime { get => Time.timeSinceLevelLoad; }
 
     static bool gameStarted = true;
@@ -120,7 +119,6 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         _score = 0;
-        _gameTime = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

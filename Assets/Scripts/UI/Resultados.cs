@@ -10,7 +10,9 @@ public class Resultados : MonoBehaviour
 
     private void OnEnable()
     {
+        float time = GameManager.GameTime;
+        int seconds = Mathf.FloorToInt(time);
         puntaje.text = GameManager.Score.ToString();
-        tiempo.text = GameManager.GameTime.ToString();
+        tiempo.text = seconds + "s";
     }
 }
