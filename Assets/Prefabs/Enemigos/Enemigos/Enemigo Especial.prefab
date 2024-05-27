@@ -229,9 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb6317da12b8844692607a0b88c808a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemToDrop: {fileID: 5419621545043240845, guid: 773a539ca19cdaa42a4537e918723b20, type: 3}
-  _dropOnDestroy: 1
-  _probability: 0.511
+  _itemList:
+  - {fileID: 5419621545043240845, guid: 773a539ca19cdaa42a4537e918723b20, type: 3}
+  - {fileID: 5419621545043240845, guid: 63ae3806ca1f1a24494ab440b72285d4, type: 3}
+  _noDropProbability: 10
+  _dropProbability: 0400000003000000
 --- !u!1 &5724061757713487833
 GameObject:
   m_ObjectHideFlags: 0
