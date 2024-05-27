@@ -330,7 +330,7 @@ MonoBehaviour:
   powerUp2: {fileID: 11400000, guid: 5216634b04850e441a78e95d3638d782, type: 2}
   powerUp1Score: 250
   powerUp2Score: 500
-  boss: {fileID: 6796494473783435774, guid: 7ce199c5bafc8a444a8e783c9b620965, type: 3}
+  boss: {fileID: 739872948365424265, guid: 6d93419172a073c43a47f6745a269e8c, type: 3}
   timeToReach: 60
 --- !u!1 &422428825
 GameObject:
@@ -3474,21 +3474,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4710920349181396690, guid: 1112d19429d553347945274387910ad9, type: 3}
-      propertyPath: m_Size.x
-      value: 2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4710920349181396690, guid: 1112d19429d553347945274387910ad9, type: 3}
-      propertyPath: m_Size.y
-      value: 2.6
-      objectReference: {fileID: 0}
     - target: {fileID: 5297582288200527732, guid: 1112d19429d553347945274387910ad9, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6255160525105960973, guid: 1112d19429d553347945274387910ad9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
