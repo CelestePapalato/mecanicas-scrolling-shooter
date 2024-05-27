@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 1996824953571870245}
   - component: {fileID: 2526187491264861404}
   m_Layer: 12
-  m_Name: Enemigo Normal
+  m_Name: navecita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   _itemList:
   - {fileID: 5419621545043240845, guid: 773a539ca19cdaa42a4537e918723b20, type: 3}
   - {fileID: 5419621545043240845, guid: 63ae3806ca1f1a24494ab440b72285d4, type: 3}
-  _noDropProbability: 15
+  _noDropProbability: 40
   _dropProbability: 0400000002000000
 --- !u!114 &2526187491264861404
 MonoBehaviour:

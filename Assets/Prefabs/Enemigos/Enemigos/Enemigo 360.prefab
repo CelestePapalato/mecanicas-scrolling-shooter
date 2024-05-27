@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5420419317417211632}
   - component: {fileID: 8366777870601741777}
   m_Layer: 12
-  m_Name: Enemigo Especial
+  m_Name: Enemigo 360
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,11 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf450b0fb353cdd4db2eb47320c5a592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilesPerShot: 3
-  spreadAngle: 15
-  fireRate: 0.3
-  startAngle: 142.5
-  endAngle: 217.5
+  projectilesPerShot: 1
+  spreadAngle: 0
+  fireRate: 0.15
+  startAngle: 0
+  endAngle: 360
   period: 3
   currentAngle: 0
   targetAngle: 0

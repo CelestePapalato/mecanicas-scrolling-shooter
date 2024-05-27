@@ -7,17 +7,19 @@ public class EnemyManager : MonoBehaviour
 {
     private static List<EnemyManager> currentInstances = new List<EnemyManager>();
 
-    [SerializeField] EnemyContainer enemyPrefab;
+    [SerializeField] List<EnemyContainer> enemyPrefabs;
     [SerializeField] int maxQuantity;
     [SerializeField] float spawnCooldown;
     [SerializeField] float timeNextBatch;
 
     List<EnemyContainer> currentEnemies = new List<EnemyContainer>();
 
+    private bool _spawningBatch = false;
+
     private void Awake()
     {
         currentInstances.Clear();
-        if (enemyPrefab) {  return; }
+        if (enemyPrefabs.Count > 0) {  return; }
         Destroy(gameObject);
     }
 
@@ -29,19 +31,25 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator SpawnBatch()
     {
+        _spawningBatch = true;
         for(int i = 0; i < maxQuantity; ++i)
         {
-            EnemyContainer enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            int index = Random.Range(0, enemyPrefabs.Count);
+            EnemyContainer enemy = Instantiate(enemyPrefabs[index], transform.position, Quaternion.identity);
             enemy.OnDead += EnemyDied;
             currentEnemies.Add(enemy);
             yield return new WaitForSeconds(spawnCooldown);
         }
+        _spawningBatch = false;
     }
 
     IEnumerator TimeOut()
     {
         yield return new WaitForSeconds(timeNextBatch);
-        StartCoroutine(SpawnBatch());
+        if (!_spawningBatch)
+        {
+            StartCoroutine(SpawnBatch());
+        }
     }
 
     private void EnemyDied(EnemyContainer enemy)
