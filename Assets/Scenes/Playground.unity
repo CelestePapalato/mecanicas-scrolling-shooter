@@ -331,7 +331,7 @@ MonoBehaviour:
   powerUp1Score: 500
   powerUp2Score: 1000
   boss: {fileID: 6796494473783435774, guid: 7ce199c5bafc8a444a8e783c9b620965, type: 3}
-  timeToReach: 15
+  timeToReach: 60
 --- !u!1 &422428825
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ Transform:
   m_GameObject: {fileID: 422428825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.69, y: -3, z: -0.05796929}
+  m_LocalPosition: {x: 9.69, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -777,6 +777,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539477309}
   m_CullTransparentMesh: 1
+--- !u!1 &553432738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553432740}
+  - component: {fileID: 553432739}
+  m_Layer: 0
+  m_Name: Enemy Manager - navecitas abajo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &553432739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553432738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b54d5addd0c3b40a71d36887b867af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 7320574255842245313, guid: a9ea0ee511d0ba043992cb6b5f5a601e, type: 3}
+  maxQuantity: 10
+  spawnCooldown: 0.4
+  timeNextBatch: 1
+--- !u!4 &553432740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553432738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.69, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584508964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,7 +2633,7 @@ Transform:
   m_GameObject: {fileID: 1568051534}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.69, y: 3, z: -0.05796929}
+  m_LocalPosition: {x: 9.69, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2788,7 +2836,7 @@ GameObject:
   - component: {fileID: 1750314741}
   - component: {fileID: 1750314740}
   m_Layer: 0
-  m_Name: Enemy Manager (2)
+  m_Name: Enemy Manager - navecitas arriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2806,9 +2854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b54d5addd0c3b40a71d36887b867af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6517680118239436139, guid: 0efe942a155cb0a4487ba0e31fc69980, type: 3}
-  maxQuantity: 1
-  spawnCooldown: 1
+  enemyPrefab: {fileID: 7320574255842245313, guid: f9507ab8bccb50141a55bdd54132c8f1, type: 3}
+  maxQuantity: 10
+  spawnCooldown: 0.4
   timeNextBatch: 1
 --- !u!4 &1750314741
 Transform:
@@ -2819,7 +2867,7 @@ Transform:
   m_GameObject: {fileID: 1750314739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.69, y: 0, z: -0.05796929}
+  m_LocalPosition: {x: 9.69, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3209,7 +3257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.07706952, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9452326, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3443,3 +3491,4 @@ SceneRoots:
   - {fileID: 1568051535}
   - {fileID: 422428827}
   - {fileID: 1750314741}
+  - {fileID: 553432740}

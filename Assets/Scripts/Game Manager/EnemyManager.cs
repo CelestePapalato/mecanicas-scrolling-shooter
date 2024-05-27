@@ -29,12 +29,12 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator SpawnBatch()
     {
-        yield return new WaitForSeconds(spawnCooldown);
         for(int i = 0; i < maxQuantity; ++i)
         {
             EnemyContainer enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             enemy.OnDead += EnemyDied;
             currentEnemies.Add(enemy);
+            yield return new WaitForSeconds(spawnCooldown);
         }
     }
 
