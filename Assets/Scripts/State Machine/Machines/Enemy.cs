@@ -7,8 +7,8 @@ public class Enemy : StateMachine
 {
     [SerializeField] int points;
     public UnityAction<Enemy> OnDead;
-    public UnityAction<Enemy> Destroyed;
     Health healthComponent;
+    ItemSpawner itemSpawner;
 
     protected override void Awake()
     {
@@ -18,6 +18,7 @@ public class Enemy : StateMachine
         {
             healthComponent.NoHealth += Dead;
         }
+        itemSpawner = GetComponent<ItemSpawner>();
     }
 
     protected override void Update()
@@ -27,6 +28,7 @@ public class Enemy : StateMachine
 
     private void Dead()
     {
+        itemSpawner?.DropItem();
         Destroy(gameObject);
         GameManager.instance.AddPoints(points);
     }

@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
+        currentInstances.Clear();
         if (enemyPrefab) {  return; }
         Destroy(gameObject);
     }
