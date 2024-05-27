@@ -41,6 +41,10 @@ public class Player : StateMachine, IBuffable
 
     protected override void Update()
     {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
         base.Update();
         if (attackInput)
         {

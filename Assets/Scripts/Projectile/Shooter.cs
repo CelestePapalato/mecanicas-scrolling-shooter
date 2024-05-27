@@ -9,6 +9,10 @@ public class Shooter : MonoBehaviour
 
     public bool ShootProjectile(Vector2 direction, float damageMultiplier)
     {
+        if (Time.timeScale == 0)
+        {
+            return false;
+        }
         if (!spawnPoint) { return false; }
         Projectile projectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
         if (projectile)
@@ -23,6 +27,10 @@ public class Shooter : MonoBehaviour
 
     public bool ShootProjectile(float degreesAngle, float damageMultiplier)
     {
+        if (Time.timeScale == 0)
+        {
+            return false;
+        }
         Vector2 direction = new Vector2();
         direction.x = Mathf.Cos(degreesAngle * Mathf.Deg2Rad);
         direction.y = Mathf.Sin(degreesAngle * Mathf.Deg2Rad);
