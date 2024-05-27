@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8863866501853293707}
   - component: {fileID: 9099912317820555361}
   - component: {fileID: 5419621545043240845}
+  - component: {fileID: 4531361759976667801}
+  - component: {fileID: 830663897530291330}
   m_Layer: 11
   m_Name: Damage Item
   m_TagString: Untagged
@@ -134,3 +136,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: {fileID: 11400000, guid: 1d23999e75eb7e64aab3a54e56ef0eb4, type: 2}
+--- !u!114 &4531361759976667801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4829987636221763048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dde75d557fb14b4b8564290bae9a408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2.5
+  direction: {x: -1, y: 0}
+--- !u!114 &830663897530291330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4829987636221763048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f0c96384a24234c8cc13dbfe58894b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
