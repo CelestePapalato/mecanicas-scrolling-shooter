@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     List<EnemyContainer> currentEnemies = new List<EnemyContainer>();
 
     private bool _spawningBatch = false;
-
+    private bool _isDestroyed = false;
     private void Awake()
     {
         currentInstances.Clear();
@@ -56,7 +56,10 @@ public class EnemyManager : MonoBehaviour
     {
         if (!enemy) { return; }
         currentEnemies.Remove(enemy);
-        if(currentEnemies.Count == 0) { StartCoroutine(TimeOut()); }
+        if (currentEnemies.Count == 0 && !_isDestroyed)
+        {
+            StartCoroutine(TimeOut());
+        }
     }
 
     private void KillAllEnemies()
@@ -82,4 +85,8 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        _isDestroyed = true;
+    }
 }
