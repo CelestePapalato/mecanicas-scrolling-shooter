@@ -268,7 +268,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  collisionOffset: 0.1
+  collisionOffset: 0.15
   currentSpeed: 0
   speedMultiplier: 1
 --- !u!114 &7201295980013426712

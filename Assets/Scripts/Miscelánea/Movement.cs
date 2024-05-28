@@ -141,17 +141,19 @@ public class Movement : MonoBehaviour
             currentSpeed * Time.fixedDeltaTime + collisionOffset
             );
 
-        if(count == 0)
+        if (count == 0)
         {
             rb.MovePosition(rb.position + direction * currentSpeed * Time.deltaTime);
             return true;
         }
         else
         {
+            /*
             foreach(RaycastHit2D hit in castCollisions)
             {
                 Debug.Log(hit);
             }
+            */
             return false;
         }
     }

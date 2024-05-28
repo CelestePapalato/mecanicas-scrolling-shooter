@@ -20,8 +20,8 @@ public class MaterialFlash : MonoBehaviour
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         flashMaterial = new Material(Shader.Find("Shader Graphs/Dyed Sprite"));
         flashMaterial.SetColor("_FlashColor", Color.white);
+        flashMaterial.SetTexture("_MainTex", spriteRenderer.sprite.texture);
         spriteRenderer.material = flashMaterial;
-        spriteRenderer.material.SetTexture("_MainTex", spriteRenderer.sprite.texture);
         SetFlashAmount(0);
     }
 

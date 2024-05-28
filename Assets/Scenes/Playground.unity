@@ -3478,6 +3478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8675563655936615726, guid: 1112d19429d553347945274387910ad9, type: 3}
+      propertyPath: collisionOffset
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
